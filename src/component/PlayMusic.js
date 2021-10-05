@@ -134,14 +134,12 @@ const PlayMusic = (props) => {
         intervalRef.current = setInterval(() => {
             //khi hết bài chuyển qua bài mới
             if (audioRef.current.ended) {
-                setisPlaying(true);
+                NextCurrentIndex();
                 if (isClickLoop) {
                     audioRef.current.play()
                     .catch(err => {}) 
-                } else {
-                    NextCurrentIndex();
-                }
-
+                } 
+                
             } else {
                 setTrackProgress(audioRef.current.currentTime);
             }
