@@ -31,7 +31,7 @@ const App = () => {
             setTheme('RoseTheme')
             localStorage.setItem('theme-color', 'RoseTheme');
             return RoseTheme
-        } else if (theme === 'IUxTheme' || theme === '') {
+        } else if (theme === 'IUxTheme') {
             localStorage.setItem('theme-color', 'IUxTheme');
             return IUxTheme
         } else if (theme === 'blackTheme' || theme === '') {
