@@ -87,11 +87,11 @@ const Navigation = (props, exact) => {
     const [isPlaying, setisPlaying] = useState(false);
     const [clickSong, setClickSong] = useState(false);
     //ramdom
-    const [isClickRandom, setisClickRandom] = useState(false);
+    const [isClickRandom, setisClickRandom] = useState(localStorage.getItem('isRandom') || false);
     //loop song
-    const [isClickLoop, setisClickLoop] = useState(false);
+    const [isClickLoop, setisClickLoop] = useState(localStorage.getItem('isLoop') ||false);
     // volume song
-    const [volumeSong, setvolumeSong] = useState(0.5);
+    const [volumeSong, setvolumeSong] = useState(Number(localStorage.getItem('volume')) || 0.5);
     //click theme
     const [isClickTheme, setisClickTheme] = useState(false);
     // changeTheme

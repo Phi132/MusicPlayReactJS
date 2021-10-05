@@ -48,7 +48,14 @@ const PlayMusic = (props) => {
     const ChangeStatusPlay = () => {
         setisPlaying(!isPlaying);
     }
-
+    // thêm click Loop vào localStorage
+    useEffect (() =>{
+        localStorage.setItem('isLoop', isClickLoop);
+    },[isClickLoop])
+    // thêm is Random vào localStorage
+    useEffect (() => {
+        localStorage.setItem('isRandom', isClickRandom);
+    }, [isClickRandom])
 
     //xử lí khi click next song
     const NextCurrentIndex = () => {

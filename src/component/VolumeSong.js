@@ -11,7 +11,8 @@ const VolumeSong = (props) => {
     const changeVolume = (value) => {
         var volumeLevel = Number(value) / 100;
         setvolumeSong(volumeLevel);
-        setVolume(volumeLevel)
+        localStorage.setItem('volume', volumeLevel);
+        setVolume(volumeLevel);
         if (volumeSong > 0) {
             setisMute(true)
         }
@@ -20,9 +21,11 @@ const VolumeSong = (props) => {
         setisMute(!isMute);
         if (isMute) {
             setvolumeSong(0);
+            localStorage.setItem('volume', 0);
         }
         else {
             setvolumeSong(volume);
+            localStorage.setItem('volume', Number(volume));
         }
     }
     // set width volume
