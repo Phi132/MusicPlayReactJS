@@ -138,6 +138,7 @@ const PlayMusic = (props) => {
                 setisPlaying(true);
                 if (isClickLoop) {
                     audioRef.current.play()
+                    .catch(err => {}) 
                 } else {
                     NextCurrentIndex();
                 }
@@ -152,6 +153,7 @@ const PlayMusic = (props) => {
 
         if (isPlaying) {
             audioRef.current.play()
+            .catch(err => {}) 
         }
 
         if (isPlayingSong) {
@@ -169,6 +171,7 @@ const PlayMusic = (props) => {
         setisPlaying(true);
         if (!isPlayingSong) {
             audioRef.current.play()
+            .catch(err => {}) 
         }
 
     }, [onTua])
@@ -188,6 +191,7 @@ const PlayMusic = (props) => {
 
             if (!isPlayingSong) {
                 audioRef.current.play()
+                .catch(err => {}) 
             }
 
             startTimer()
@@ -230,11 +234,13 @@ const PlayMusic = (props) => {
     useEffect(() => {
         if (isPlaying) {
             audioRef.current.play()
+            .catch(err => {}) 
         }
 
     }, [clickSong]);
     if (isPlaying) {
         audioRef.current.play()
+        .catch(err => {}) 
     }
     //set volume song
     const volumeSong = props.volumeSong;
