@@ -3,7 +3,8 @@ import React from 'react'
 const RanDomSong = (props) => {
     const isClickRandom = props.isClickRandom
     const onClickRandom = () => {
-        props.setisClickRandom(!isClickRandom)
+        props.setisClickRandom(!isClickRandom);
+        localStorage.setItem('isRandom', !isClickRandom);
 
     }
     return (
