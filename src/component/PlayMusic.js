@@ -126,7 +126,7 @@ const PlayMusic = (props) => {
                 setloadTua(true);
                 setonTua(!onTua)
             }
-            else if (!isNaN(audioRef.current.duration) ) {
+            else if (!isNaN(audioRef.current.duration)) {
                 audioRef.current.currentTime = Number(value);
                 setTrackProgress(Number(value));
                 setonTua(!onTua)
@@ -222,14 +222,10 @@ const PlayMusic = (props) => {
     // xử lí khi vừa load lại web
     useEffect(() => {
         if (isRunSong === false) {
-
+            audioRef.current.pause();
             setisPlaying(false);
         }
         return () => {
-            audioRef.current.pause();
-
-            console.log("run will ", isRunSong)
-
         }
     });
     useEffect(() => {
