@@ -40,9 +40,9 @@ const PlayMusic = (props) => {
 
     //const [isAdjustTimeSong, setisAdjustTimeSong] = useState(false)
     const [onTua, setonTua] = useState(false)
-
+    const [loadTua, setloadTua] = useState(false)
     const [trackProgress, setTrackProgress] = useState(Number(localStorage.getItem('currentTime')) || 0);
-    // const [isRunSong, setisRunSong] = useState(false);
+    const [isRunSong, setisRunSong] = useState(false);
 
     // thay doi trang thai cua nut play
     const ChangeStatusPlay = () => {
@@ -120,11 +120,22 @@ const PlayMusic = (props) => {
         if (isNaN(value)) {
 
         } else {
+            if (!isNaN(audioRef.current.duration) && !loadTua) {
+                audioRef.current.currentTime = Number(value) / 100 * audioRef.current.duration;
+                setTrackProgress(Number(value) / 100 * audioRef.current.duration);
+                setloadTua(true);
+                setonTua(!onTua)
+            }
+            else if (!isNaN(audioRef.current.duration) ) {
+                audioRef.current.currentTime = Number(value);
+                setTrackProgress(Number(value));
+                setonTua(!onTua)
+            }
 
-            audioRef.current.currentTime = Number(value);
-            setTrackProgress(Number(value))
-            //ChangeStatusPlayTRUE();
-            setonTua(!onTua)
+
+
+
+
         }
     }
     const startTimer = () => {
@@ -207,18 +218,26 @@ const PlayMusic = (props) => {
     }, [isPlaying])
     // effect loop song and next when time out song
     // nếu isRunSong false thì btn play ngưng
-    // if (isRunSong === false) {
-    //     audioRef.current.pause();
-    //     setisPlaying(false);
-    // }
-    // console.log(isRunSong)
+
     // xử lí khi vừa load lại web
+    useEffect(() => {
+        if (isRunSong === false) {
+
+            setisPlaying(false);
+        }
+        return () => {
+            audioRef.current.pause();
+
+            console.log("run will ", isRunSong)
+
+        }
+    });
     useEffect(() => {
 
         startTimer();
         localStorage.setItem('currentTime', trackProgress);
         //set lại isRunSong true
-        // setisRunSong(true);
+        setisRunSong(true);
     }, [trackProgress])
 
     //set time cho bai hat
