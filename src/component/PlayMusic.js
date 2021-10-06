@@ -27,7 +27,7 @@ const PlayMusic = (props) => {
     const setisClickLoop = props.setisClickLoop;
     //audio
     const audioRef = useRef(new Audio(songs[currentIndex].path));
-    
+
     const { duration } = audioRef.current;
 
     var isPlayingSong = audioRef.current.currentTime > 0
@@ -41,8 +41,8 @@ const PlayMusic = (props) => {
     //const [isAdjustTimeSong, setisAdjustTimeSong] = useState(false)
     const [onTua, setonTua] = useState(false)
 
-    const [trackProgress, setTrackProgress] = useState( Number(localStorage.getItem('currentTime')) || 0);
-
+    const [trackProgress, setTrackProgress] = useState(Number(localStorage.getItem('currentTime')) || 0);
+    // const [isRunSong, setisRunSong] = useState(false);
 
     // thay doi trang thai cua nut play
     const ChangeStatusPlay = () => {
@@ -72,16 +72,16 @@ const PlayMusic = (props) => {
     }
 
     // style
-    var trackProgressRotate = trackProgress*20;
+    var trackProgressRotate = trackProgress * 20;
     const avtStyle = {
         backgroundImage: `url("${songs[currentIndex].image}")`,
         transform: `rotate(${trackProgressRotate}deg)`,
-        transition : 'all .4s linear',
+        transition: 'all .4s linear',
     }
     const avtStyleActive = {
         backgroundImage: `url("${songs[currentIndex].image}")`,
         transform: `rotate(${trackProgressRotate}deg)`,
-        transition : 'all 1s linear',
+        transition: 'all 1s linear',
     }
 
 
@@ -118,7 +118,7 @@ const PlayMusic = (props) => {
     const onAdjustTime = (value) => {
 
         if (isNaN(value)) {
-            
+
         } else {
 
             audioRef.current.currentTime = Number(value);
@@ -134,12 +134,14 @@ const PlayMusic = (props) => {
         intervalRef.current = setInterval(() => {
             //khi hết bài chuyển qua bài mới
             if (audioRef.current.ended) {
-                NextCurrentIndex();
+
                 if (isClickLoop) {
                     audioRef.current.play()
-                    .catch(err => {}) 
-                } 
-                
+                        .catch(err => { })
+                } else {
+                    NextCurrentIndex();
+                }
+
             } else {
                 setTrackProgress(audioRef.current.currentTime);
             }
@@ -150,7 +152,7 @@ const PlayMusic = (props) => {
 
         if (isPlaying) {
             audioRef.current.play()
-            .catch(err => {}) 
+                .catch(err => { })
         }
 
         if (isPlayingSong) {
@@ -168,7 +170,7 @@ const PlayMusic = (props) => {
         setisPlaying(true);
         if (!isPlayingSong) {
             audioRef.current.play()
-            .catch(err => {}) 
+                .catch(err => { })
         }
 
     }, [onTua])
@@ -188,7 +190,7 @@ const PlayMusic = (props) => {
 
             if (!isPlayingSong) {
                 audioRef.current.play()
-                .catch(err => {}) 
+                    .catch(err => { })
             }
 
             startTimer()
@@ -204,17 +206,25 @@ const PlayMusic = (props) => {
         return () => window.removeEventListener('keyup', onKeyup);
     }, [isPlaying])
     // effect loop song and next when time out song
+    // nếu isRunSong false thì btn play ngưng
+    // if (isRunSong === false) {
+    //     audioRef.current.pause();
+    //     setisPlaying(false);
+    // }
+    // console.log(isRunSong)
     // xử lí khi vừa load lại web
     useEffect(() => {
 
         startTimer();
         localStorage.setItem('currentTime', trackProgress);
+        //set lại isRunSong true
+        // setisRunSong(true);
     }, [trackProgress])
 
     //set time cho bai hat
-    useEffect(() =>{
+    useEffect(() => {
         audioRef.current.currentTime = (trackProgress)
-    },[])
+    }, [])
 
     useEffect(() => {
         // Pause and clean up on unmount
@@ -231,13 +241,13 @@ const PlayMusic = (props) => {
     useEffect(() => {
         if (isPlaying) {
             audioRef.current.play()
-            .catch(err => {}) 
+                .catch(err => { })
         }
 
     }, [clickSong]);
     if (isPlaying) {
         audioRef.current.play()
-        .catch(err => {}) 
+            .catch(err => { })
     }
     //set volume song
     const volumeSong = props.volumeSong;
