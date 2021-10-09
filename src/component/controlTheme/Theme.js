@@ -97,7 +97,7 @@ export const GlobalStyles = createGlobalStyle`
         background-color: ${(props) => props.theme.alphaBg};
     }
     .btn-option-link i, .play-all, .list-title,
-    .arrow-retreat i, .arrow-advance i {
+    .arrow-retreat i, .arrow-advance i, .theme-name {
         color: ${(props) => props.theme.textPrimary};
     }
     .control__theme {

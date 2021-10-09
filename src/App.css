@@ -710,8 +710,8 @@ button:focus {
 }
 
 .theme-name {
-  color: white;
   margin-bottom: 10px;
+  font-weight: 500;
 }
 
 .footer {
