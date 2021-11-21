@@ -83,7 +83,7 @@ const MyMusic = (props) => {
                                     className="avt_profile" alt="avt Profile" />
                             </div>
                             <div className="profile_cnt_name">
-                                <span>Thành Phi</span>
+                                <span>Thành Phi Đẹp Trai</span>
                             </div>
                             <div className="profile_cnt_actions">
                                 <div className="buy-vip-action">
