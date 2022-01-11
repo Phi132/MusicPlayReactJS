@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 import StartMusic from './MusicControl/StartMusic';
+import {
+    BrowserRouter as Router,
+    NavLink,
+
+} from "react-router-dom";
 
 import PrevSong from './MusicControl/PrevSong';
 import NextSong from './MusicControl/NextSong';
@@ -278,24 +283,27 @@ const PlayMusic = (props) => {
         <div className="play__music">
             <div className="col-md-3 player-left">
                 <div className="player-controll-left">
-                    <div className="avt-song"
-                        style={isPlaying ? avtStyleActive : avtStyle}
-                    >
+                    <NavLink to="/mymusic" className="player-controll-left--link">
+                        <div className="avt-song"
+                            style={isPlaying ? avtStyleActive : avtStyle}
+                        >
 
-                    </div>
+                        </div>
 
-                    <div className="name-singer-song">
-                        <div className="name-song">
-                            <marquee width="100%" behavior="scroll">
-                                {songs[currentIndex].name}
-                            </marquee>
+                        <div className="name-singer-song">
+                            <div className="name-song">
+                                <marquee width="100%" behavior="scroll">
+                                    {songs[currentIndex].name}
+                                </marquee>
+                            </div>
+                            <div className="name-singer">
+                                <span>
+                                    {songs[currentIndex].singer}
+                                </span>
+                            </div>
                         </div>
-                        <div className="name-singer">
-                            <span>
-                                {songs[currentIndex].singer}
-                            </span>
-                        </div>
-                    </div>
+                    </NavLink>
+
                     <div className="like-list">
                         <div className="icon-heart">
                             <a href="#" className="link-heart-list">

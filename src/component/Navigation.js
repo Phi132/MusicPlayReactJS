@@ -16,6 +16,7 @@ import PlayMusic from './PlayMusic';
 import VolumeSong from './VolumeSong';
 import Chart from './ChartPage/Chart';
 import { Auth } from './context/Auth';
+import Maintance from './Maintance/Maintance';
 
 const Navigation = (props, exact) => {
     const [songs] = useState([
@@ -356,6 +357,14 @@ const Navigation = (props, exact) => {
                                             setisPlaying={setisPlaying}
                                         />
                                     </Route>
+
+                                    <Route exact={true} path="/radio">
+                                        <Maintance />
+                                    </Route>
+                                    <Route exact={true} path="/follow">
+                                        <Maintance />
+                                    </Route>
+
                                     <Route exact={true} path="/">
                                         <Home />
                                     </Route>
@@ -370,8 +379,9 @@ const Navigation = (props, exact) => {
                             <nav className="sidebar-brand">
                                 <div className="logo-brand  ">
                                     <Link to="/">
-                                        <img className="img-logo" src="https://sanvieclamdanang.com/upload/imagelogo/logodefault3.jpg"
-                                            alt="MusicLogo" />
+                                        <div className="img-logo-main">
+
+                                        </div>
                                     </Link>
 
 
