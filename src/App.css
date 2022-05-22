@@ -125,17 +125,18 @@
 
 .img-logo {
   width: 100%;
-  height: 100px;
+  height: 90px;
   object-fit: cover;
 }
 
 .img-logo-main {
-  width: 200px;
+  width: 180px;
   height: 100px;
   background-image: url('./img/logo-main.jpg');
   background-size: cover;
   background-position: center;
   object-fit: cover;
+  margin: 0 auto;
 }
 
 .sidebar-main {
