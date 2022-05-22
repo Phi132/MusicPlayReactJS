@@ -7,7 +7,7 @@ function Maintance() {
 
                 <div className='maintance-container'>
                     <div className='maintance-content'>
-                        Tính năng này đang trong quá trình thực hiện
+                        Tính năng này đang trong quá trình xây dựng
                     </div>
                 </div>
 
