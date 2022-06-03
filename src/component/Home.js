@@ -319,26 +319,26 @@ const Home = () => {
                                                             </div>
                                                         </div>
                                                         <div className="name_singer_music">
-                                                            {item.tracks && item.tracks && item.tracks.length > 0 ?
-                                                                item.tracks.map((value, index) => {
-                                                                    return (
+                                                            <div className='info-name-singer' >
+                                                                {item.tracks && item.tracks && item.tracks.length > 0 ?
+                                                                    item.tracks.map((value, index) => {
+                                                                        return (
+                                                                            value.artists.map((artist, index2) => {
+                                                                                return (
+                                                                                    <span className="name-singer-content" key={index2}>
+                                                                                        {artist},
+                                                                                    </span>
+                                                                                )
+                                                                            })
 
-                                                                        <div className='name-singer-content' key={index}>
-                                                                            <span className='info-name-singer'>
-                                                                                <div className="list-songs--info--name-artist" >
-                                                                                    {value.artists[0]}
-                                                                                </div>
-                                                                                <div className='comma-playlist'>,</div>
-                                                                            </span>
-                                                                        </div>
-
-                                                                    )
-                                                                })
-                                                                : (
-                                                                    <span className="list-songs--info--name-artist" >
-                                                                        Không có nghệ sĩ nào
-                                                                    </span>
-                                                                )}
+                                                                        )
+                                                                    })
+                                                                    : (
+                                                                        <span className="list-songs--info--name-artist" >
+                                                                            Không có nghệ sĩ nào
+                                                                        </span>
+                                                                    )}
+                                                            </div>
                                                         </div>
 
                                                     </div>

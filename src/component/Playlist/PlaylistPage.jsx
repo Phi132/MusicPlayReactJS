@@ -205,12 +205,14 @@ function PlaylistPage(props) {
                   currentNamePlaylist && currentNamePlaylist.tracks && currentNamePlaylist.tracks.length > 0 ?
                     currentNamePlaylist.tracks.map((value, index) => {
                       return (
-                        <span key={index}>
-                          <span className="media-content-artist-name" >
-                            {value.artists[0]}
-                          </span>
-                          <span className='comma-playlist'>,</span>
-                        </span>
+                        value.artists.map((artist, index2) => {
+                          return (
+                            <span className="name-singer-content" key={index2}>
+                              {artist},
+                            </span>
+                          )
+                        })
+
 
                       )
                     }) : (

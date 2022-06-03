@@ -142,7 +142,8 @@ export const GlobalStyles = createGlobalStyle`
         fill:  ${(props) => props.theme.textPrimary} !important;
     }
 
-    .list-songs--info--name-artist:hover {
+    .list-songs--info--name-artist:hover,
+    .name-singer-content:hover {
         color:  ${(props) => props.theme.purplePrimary} !important;
     }
     .list-music-header--songs, .list-music-header--songs span,
