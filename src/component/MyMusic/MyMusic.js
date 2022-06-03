@@ -64,7 +64,6 @@ const MyMusic = (props) => {
         });
 
     }, []);
-    console.log("index", IndexSong);
 
     const songs = props.songs
     var CurrentIndex = props.currentIndex;

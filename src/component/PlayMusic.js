@@ -21,7 +21,7 @@ import noImgPlaylist from '../img/no_playList.PNG';
 const PlayMusic = (props) => {
     //const audioRef = useRef(null);
 
-    const [{ URL_WEBSITE, 
+    const [{ URL_WEBSITE,
         // accessTokenProvider,
         currentPlaying,
         URL_SERVER, myplaylist,
@@ -32,6 +32,7 @@ const PlayMusic = (props) => {
     const [timeSong, setTimeSong] = useState();
     const [timeDuration, setTimeDuration] = useState();
     const [isPlayingSong, setIsPlayingSong] = useState();
+    const [pathCurrentSongPlaying, setPathCurrentSongPlaying] = useState("/");
 
     var songs = props.songs;
     var currentIndex = props.currentIndex;
@@ -64,13 +65,13 @@ const PlayMusic = (props) => {
 
     // xử lí khi click vào previous song
     // useEffect(() => {
-        if (JSON.parse(localStorage.getItem('IndexSongPlaying')) < 0) {
-            setCurrentIndex(currentPlaylistNoapi.length - 1)
-            dispatch({ dataIndexSong: currentPlaylistNoapi.length - 1, type: reducerCases.SET_INDEX_SONG })
+    if (JSON.parse(localStorage.getItem('IndexSongPlaying')) < 0) {
+        setCurrentIndex(currentPlaylistNoapi.length - 1)
+        dispatch({ dataIndexSong: currentPlaylistNoapi.length - 1, type: reducerCases.SET_INDEX_SONG })
 
-            localStorage.setItem('IndexSongPlaying', currentPlaylistNoapi.length - 1);
+        localStorage.setItem('IndexSongPlaying', currentPlaylistNoapi.length - 1);
 
-        }
+    }
     // }, [IndexSong, JSON.parse(localStorage.getItem('IndexSongPlaying'))]);
 
     //audio
@@ -175,7 +176,7 @@ const PlayMusic = (props) => {
     //                             }
     //                         }
     //                     );
-                       
+
     //                 }
     //             }
     //             else if (!accessTokenProvider) {
@@ -524,6 +525,12 @@ const PlayMusic = (props) => {
     useEffect(() => {
         audioRef.current.volume = volumeSong;
     }, [IndexSong])
+    // xử lí khi click vào bài hát ở thanh control music
+    useEffect(() => {
+        let idSong = JSON.parse(localStorage.getItem('PlaylistSong'))[JSON.parse(localStorage.getItem('IndexSongPlaying'))].id
+
+        setPathCurrentSongPlaying(idSong.split("_")[0])
+    }, [JSON.parse(localStorage.getItem('IndexSongPlaying')), JSON.parse(localStorage.getItem('PlaylistSong'))])
     return (
         // < SpotifyPlayer
         //     token={props.accessToken}
@@ -534,7 +541,7 @@ const PlayMusic = (props) => {
         <div className="play__music">
             <div className="col-md-3 player-left">
                 <div className="player-controll-left">
-                    <NavLink to="/mymusic" className="player-controll-left--link">
+                    <NavLink to={pathCurrentSongPlaying} className="player-controll-left--link">
                         <div className="avt-song"
                             style={isPlaying ? avtStyleActive : avtStyle}
                         ></div>

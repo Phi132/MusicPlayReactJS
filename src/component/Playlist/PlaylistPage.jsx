@@ -266,10 +266,13 @@ function PlaylistPage(props) {
               {
                 currentPlaylistNoapi && currentPlaylistNoapi.length > 1 ?
                   currentPlaylistNoapi.map((value, index) => {
+                   
                     return (
-                      <div className={index === JSON.parse(localStorage.getItem('IndexSongPlaying'))
-                        ? "list-music-content select-header song active"
-                        : "list-music-content select-header song"}
+                      <div className={
+                        (index === JSON.parse(localStorage.getItem('IndexSongPlaying')))
+                          && (value.id === JSON.parse(localStorage.getItem('PlaylistSong'))[JSON.parse(localStorage.getItem('IndexSongPlaying'))].id)
+                          ? "list-music-content select-header song active"
+                          : "list-music-content select-header song"}
 
                         key={index}
                         onClick={() => onClickSong(index)}>

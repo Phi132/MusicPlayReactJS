@@ -11,7 +11,7 @@ const OverviewMM = (props) => {
     var CurrentIndex = props.CurrentIndex;
     const onClickSong = (index) => {
         props.setCurrentIndex(index);
-        
+
         dispatch({ dataIndexSong: index, type: reducerCases.SET_INDEX_SONG });
         dispatch({ playWhenChangePlaylist: currentPlaylistNoapi, type: reducerCases.SET_CHANGE_PLAYLIST_PLAYING });
 
@@ -164,7 +164,11 @@ const OverviewMM = (props) => {
 
                                             return (
 
-                                                <div className={index === IndexSong ? "song active" : "song"}
+                                                <div className={
+                                                    (index === JSON.parse(localStorage.getItem('IndexSongPlaying')))
+                                                        && (song.id === JSON.parse(localStorage.getItem('PlaylistSong'))[JSON.parse(localStorage.getItem('IndexSongPlaying'))].id)
+                                                        ? "song active" : "song"
+                                                }
                                                     data-index={index}
                                                     key={index}
                                                     onClick={() => onClickSong(index)}

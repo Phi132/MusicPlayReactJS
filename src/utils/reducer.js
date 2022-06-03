@@ -19,7 +19,7 @@ export const initalState = {
             name: "Lofi Một Chút Thôi",
             tracks: [
                 {
-                    id: "ctbmn1song1",
+                    id: "/playlistpage/ctbmn1_song1",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w165_r1x1_webp/cover/b/b/4/f/bb4fc8bc51afc82eb63cabc68b6e42da.jpg" },
                     name: "Phượng Buồn",
                     artists: [
@@ -30,7 +30,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn1/song1.mp3",
                 },
                 {
-                    id: "ctbmn1song2",
+                    id: "/playlistpage/ctbmn1_song2",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/f/8/d/7/f8d715152be52e11c7397aca0029de3f.jpg" },
                     name: "em bỏ hút thuốc chưa? (liu riu version)",
                     artists: [
@@ -40,7 +40,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn1/song2.mp3",
                 },
                 {
-                    id: "ctbmn1song3",
+                    id: "/playlistpage/ctbmn1_song3",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/c/d/c/9/cdc97c56de2db4b273513653b83113b9.jpg" },
                     name: "Cô Ấy Nói (Lofi Version)",
                     artists: [
@@ -58,7 +58,7 @@ export const initalState = {
             name: "Playlist Này Chill Phết",
             tracks: [
                 {
-                    id: "ctbmn2song1",
+                    id: "/playlistpage/ctbmn2_song1",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/2/b/6/c/2b6c98314c36538ce556ff99c6a5e33f.jpg" },
                     name: "Em Là Hoàng Hôn",
                     artists: [
@@ -69,7 +69,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn2/song1.mp3",
                 },
                 {
-                    id: "ctbmn2song2",
+                    id: "/playlistpage/ctbmn2_song2",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/9/4/e/e/94ee19e2a027ec737edfc167598f5a65.jpg" },
                     name: "Cứ Nói Yêu Lần Này",
                     artists: [
@@ -79,7 +79,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn2/song2.mp3",
                 },
                 {
-                    id: "ctbmn2song3",
+                    id: "/playlistpage/ctbmn2_song3",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/8/b/8/0/8b80337d881796195732edd7154fdcdc.jpg" },
                     name: "GPS",
                     artists: [
@@ -99,7 +99,7 @@ export const initalState = {
             name: "Chàng Trai Indie Việt",
             tracks: [
                 {
-                    id: "ctbmn3song1",
+                    id: "/playlistpage/ctbmn3_song1",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/0/8/5/0/0850b7d79b732fd99e3383909f807d58.jpg" },
                     name: "Dù Cho Mai Về Sau",
                     artists: [
@@ -109,7 +109,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn3/song1.mp3",
                 },
                 {
-                    id: "ctbmn3song2",
+                    id: "/playlistpage/ctbmn3_song2",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/b/e/3/c/be3c44f7bb2d76e510905b218499d408.jpg" },
                     name: "Có Em",
                     artists: [
@@ -120,7 +120,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn3/song2.mp3",
                 },
                 {
-                    id: "ctbmn3song3",
+                    id: "/playlistpage/ctbmn3_song3",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/7/1/7/8/7178cafc2f44b59b8c535d9d73c8d502.jpg" },
                     name: "Kẻ Cô Đơn Trong Thành Phố",
                     artists: [
@@ -130,7 +130,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn3/song3.mp3",
                 },
                 {
-                    id: "ctbmn3song4",
+                    id: "/playlistpage/ctbmn3_song4",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/e/2/5/b/e25b4db6440e1b062562836b9d687418.jpg" },
                     name: "Ánh Sao Và Bầu Trời",
                     artists: [
@@ -140,7 +140,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn3/song4.mp3",
                 },
                 {
-                    id: "ctbmn3song5",
+                    id: "/playlistpage/ctbmn3_song5",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w165_r1x1_webp/cover/5/d/7/6/5d76f8f71c270b8e2adb413ae524037c.jpg" },
                     name: "Về Bên Anh",
                     artists: [
@@ -150,7 +150,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn3/song5.mp3",
                 },
                 {
-                    id: "ctbmn3song6",
+                    id: "/playlistpage/ctbmn3_song6",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/b/e/4/1/be41a10a794e7b1be1662e0128a816be.jpg" },
                     name: "tiny love",
                     artists: [
@@ -160,7 +160,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn3/song6.mp3",
                 },
                 {
-                    id: "ctbmn3song7",
+                    id: "/playlistpage/ctbmn3_song7",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_png/covers/a/a/aadb09102b0a091ea39d6e6f670d4426_1513155952.png" },
                     name: "Một Điều Mà Anh Rất Ngại Nói Ra",
                     artists: [
@@ -170,7 +170,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn3/song7.mp3",
                 },
                 {
-                    id: "ctbmn3song8",
+                    id: "/playlistpage/ctbmn3_song8",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/9/6/6/9/9669f2d1309d75c957e75935d18fab0d.jpg" },
                     name: "Blue Tequila",
                     artists: [
@@ -187,7 +187,7 @@ export const initalState = {
             name: "Rap Việt Cực Chất",
             tracks: [
                 {
-                    id: "ctbmn4song1",
+                    id: "/playlistpage/ctbmn4_song1",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/3/0/7/4/30746500c0291bb258cdea468f4beb2f.jpg" },
                     name: "Upside Down",
                     artists: [
@@ -197,7 +197,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn4/song1.mp3",
                 },
                 {
-                    id: "ctbmn4song2",
+                    id: "/playlistpage/ctbmn4_song2",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/3/0/7/4/30746500c0291bb258cdea468f4beb2f.jpg" },
                     name: "Upside Down",
                     artists: [
@@ -207,7 +207,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn4/song1.mp3",
                 },
                 {
-                    id: "ctbmn4song3",
+                    id: "/playlistpage/ctbmn4_song3",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/3/0/7/4/30746500c0291bb258cdea468f4beb2f.jpg" },
                     name: "Upside Down",
                     artists: [
@@ -217,7 +217,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn4/song1.mp3",
                 },
                 {
-                    id: "ctbmn4song4",
+                    id: "/playlistpage/ctbmn4_song4",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/3/0/7/4/30746500c0291bb258cdea468f4beb2f.jpg" },
                     name: "Upside Down",
                     artists: [
@@ -227,7 +227,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn4/song1.mp3",
                 },
                 {
-                    id: "ctbmn4song5",
+                    id: "/playlistpage/ctbmn4_song5",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/3/0/7/4/30746500c0291bb258cdea468f4beb2f.jpg" },
                     name: "Upside Down",
                     artists: [
@@ -237,7 +237,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn4/song1.mp3",
                 },
                 {
-                    id: "ctbmn4song6",
+                    id: "/playlistpage/ctbmn4_song6",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/3/0/7/4/30746500c0291bb258cdea468f4beb2f.jpg" },
                     name: "Upside Down",
                     artists: [
@@ -254,7 +254,7 @@ export const initalState = {
             name: "Hip-Hop Now",
             tracks: [
                 {
-                    id: "ctbmn5song1",
+                    id: "/playlistpage/ctbmn5_song1",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/e/7/b/5/e7b5b51e9ce0d4327ffd811c9815770c.jpg" },
                     name: "True Love",
                     artists: [
@@ -265,7 +265,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn5/song1.mp3",
                 },
                 {
-                    id: "ctbmn5song2",
+                    id: "/playlistpage/ctbmn5_song2",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/e/7/b/5/e7b5b51e9ce0d4327ffd811c9815770c.jpg" },
                     name: "True Love",
                     artists: [
@@ -276,7 +276,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn5/song1.mp3",
                 },
                 {
-                    id: "ctbmn5song3",
+                    id: "/playlistpage/ctbmn5_song3",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/e/7/b/5/e7b5b51e9ce0d4327ffd811c9815770c.jpg" },
                     name: "True Love",
                     artists: [
@@ -287,7 +287,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn5/song1.mp3",
                 },
                 {
-                    id: "ctbmn5song4",
+                    id: "/playlistpage/ctbmn5_song4",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/e/7/b/5/e7b5b51e9ce0d4327ffd811c9815770c.jpg" },
                     name: "True Love",
                     artists: [
@@ -298,7 +298,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn5/song1.mp3",
                 },
                 {
-                    id: "ctbmn5song5",
+                    id: "/playlistpage/ctbmn5_song5",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/e/7/b/5/e7b5b51e9ce0d4327ffd811c9815770c.jpg" },
                     name: "True Love",
                     artists: [
@@ -309,7 +309,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn5/song1.mp3",
                 },
                 {
-                    id: "ctbmn5song6",
+                    id: "/playlistpage/ctbmn5_song6",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/e/7/b/5/e7b5b51e9ce0d4327ffd811c9815770c.jpg" },
                     name: "True Love",
                     artists: [
@@ -320,7 +320,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn5/song1.mp3",
                 },
                 {
-                    id: "ctbmn5song7",
+                    id: "/playlistpage/ctbmn5_song7",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/e/7/b/5/e7b5b51e9ce0d4327ffd811c9815770c.jpg" },
                     name: "True Love",
                     artists: [
@@ -331,7 +331,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn5/song1.mp3",
                 },
                 {
-                    id: "ctbmn5song8",
+                    id: "/playlistpage/ctbmn5_song8",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/e/7/b/5/e7b5b51e9ce0d4327ffd811c9815770c.jpg" },
                     name: "True Love",
                     artists: [
@@ -349,7 +349,7 @@ export const initalState = {
             name: "K-Pop Hot Summer",
             tracks: [
                 {
-                    id: "ctbmn5song1",
+                    id: "/playlistpage/ctbmn6_song1",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/b/6/4/b/b64b9bc077f35f2ed79c6e5b019e81ea.jpg" },
                     name: "AS IF IT'S YOUR LAST",
                     artists: [
@@ -359,7 +359,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn6/song1.mp3",
                 },
                 {
-                    id: "ctbmn5song2",
+                    id: "/playlistpage/ctbmn6_song2",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/b/6/4/b/b64b9bc077f35f2ed79c6e5b019e81ea.jpg" },
                     name: "AS IF IT'S YOUR LAST",
                     artists: [
@@ -369,7 +369,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn6/song1.mp3",
                 },
                 {
-                    id: "ctbmn5song3",
+                    id: "/playlistpage/ctbmn6_song3",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/b/6/4/b/b64b9bc077f35f2ed79c6e5b019e81ea.jpg" },
                     name: "AS IF IT'S YOUR LAST",
                     artists: [
@@ -379,7 +379,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn6/song1.mp3",
                 },
                 {
-                    id: "ctbmn5song4",
+                    id: "/playlistpage/ctbmn6_song4",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/b/6/4/b/b64b9bc077f35f2ed79c6e5b019e81ea.jpg" },
                     name: "AS IF IT'S YOUR LAST",
                     artists: [
@@ -389,7 +389,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn6/song1.mp3",
                 },
                 {
-                    id: "ctbmn5song5",
+                    id: "/playlistpage/ctbmn6_song5",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/b/6/4/b/b64b9bc077f35f2ed79c6e5b019e81ea.jpg" },
                     name: "AS IF IT'S YOUR LAST",
                     artists: [
@@ -399,7 +399,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn6/song1.mp3",
                 },
                 {
-                    id: "ctbmn5song6",
+                    id: "/playlistpage/ctbmn6_song6",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/b/6/4/b/b64b9bc077f35f2ed79c6e5b019e81ea.jpg" },
                     name: "AS IF IT'S YOUR LAST",
                     artists: [
@@ -409,7 +409,7 @@ export const initalState = {
                     uri: "/assets/song/ctbmn6/song1.mp3",
                 },
                 {
-                    id: "ctbmn5song7",
+                    id: "/playlistpage/ctbmn6_song7",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/b/6/4/b/b64b9bc077f35f2ed79c6e5b019e81ea.jpg" },
                     name: "AS IF IT'S YOUR LAST",
                     artists: [
@@ -418,13 +418,13 @@ export const initalState = {
                     duration: "03:33",
                     uri: "/assets/song/ctbmn6/song1.mp3",
                 },
-                
+
             ]
         },
     ],
     myplaylist: [
         {
-            id: "mysong01",
+            id: "/mymusic_01",
             name: "Sóng",
             artists: ["Dzàng Hoàng", "Thúy Anh ", " Bảo Nguyên"],
             uri: "/assets/song/mymusic/song1.mp3",
@@ -432,7 +432,7 @@ export const initalState = {
             duration: "05:05"
         },
         {
-            id: "mysong02",
+            id: "/mymusic_02",
             name: "Đã Từng",
             artists: [
                 "Bùi Anh Tuấn ",
@@ -443,7 +443,7 @@ export const initalState = {
             duration: "04:56"
         },
         {
-            id: "mysong03",
+            id: "/mymusic_03",
             name: "Suýt Nữa Thì",
             artists: ["Andiez",],
             uri: "/assets/song/mymusic/song3.mp3",
@@ -452,7 +452,7 @@ export const initalState = {
             duration: "04:43"
         },
         {
-            id: "mysong04",
+            id: "/mymusic_04",
             name: "Ngày Mai Em Đi (Touliver Mix)",
             artists: ["Touliver", "Lê Hiếu", "SooBin"],
             uri: "/assets/song/mymusic/song4.mp3",
@@ -461,7 +461,7 @@ export const initalState = {
             duration: "03:38"
         },
         {
-            id: "mysong05",
+            id: "/mymusic_05",
             name: "Giả Vờ Nhưng Em Yêu Anh",
             artists: ["Miu Lê"],
             uri: "/assets/song/mymusic/song5.mp3",
@@ -470,7 +470,7 @@ export const initalState = {
             duration: "03:54"
         },
         {
-            id: "mysong06",
+            id: "/mymusic_06",
             name: "Muộn Rồi Mà Sao Còn",
             artists: ["Sơn Tùng M-TP"],
             uri: "/assets/song/mymusic/song6.mp3",
@@ -479,7 +479,7 @@ export const initalState = {
             duration: "04:35"
         },
         {
-            id: "mysong07",
+            id: "/mymusic_07",
             name: "STAY",
             artists: ["Justin Bieber"],
             uri: "/assets/song/mymusic/song7.mp3",
@@ -488,7 +488,7 @@ export const initalState = {
             duration: "02:21"
         },
         {
-            id: "mysong08",
+            id: "/mymusic_08",
             name: "Heartbreak Anniversary",
             artists: ["Giveon"],
             uri:
@@ -497,7 +497,7 @@ export const initalState = {
             duration: "03:16"
         },
         {
-            id: "mysong09",
+            id: "/mymusic_09",
             image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/3/1/e/3/31e3c0cca618fa62edb760f908d6f3c5.jpg" },
             name: "Phải Chăng Em Đã Yêu?",
             artists: [
