@@ -11,7 +11,7 @@ import noImgPlaylist from '../../img/no_playList.PNG';
 function PlaylistPage(props) {
 
   const location = useLocation();
-  const { go, goBack, goForward } = useHistory();
+  // const { go, goBack, goForward } = useHistory();
   // const [{ selectedPlaylistId, infoPlaylist, accessTokenProvider, URL_SERVER }, dispatch] = useProviderContext();
 
   const [{ currentNamePlaylist,
@@ -179,10 +179,10 @@ function PlaylistPage(props) {
         color: "white",
         marginTop: "74px"
       }}>
-        <button onClick={() => go(-2)}>Go 2 pages back</button>
+        {/* <button onClick={() => go(-2)}>Go 2 pages back</button>
         <button onClick={goBack}>Go back</button>
         <button onClick={goForward}>Go forward</button>
-        <button onClick={() => go(2)}>Go 2 pages forward</button>
+        <button onClick={() => go(2)}>Go 2 pages forward</button> */}
         <div className="container container-playlist">
           <div className="media-container playlist-header">
             <div className="media-left-img">
