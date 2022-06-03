@@ -96,15 +96,11 @@ const MyMusic = (props) => {
                     <div className="user_profile_header">
                         <div className="profile_container">
                             <div className="profile_cnt_avt">
-                                <img src={
-                                    owner && owner.images && owner.images[0].url
-                                        ? (owner.images[0].url)
-                                        : "https://cdn.icon-icons.com/icons2/2506/PNG/512/user_icon_150670.png"
-                                }
+                                <img src="/assets/img/avt01.jpg"
                                     className="avt_profile" alt="avt Profile" />
                             </div>
                             <div className="profile_cnt_name">
-                                <span>{owner && owner.display_name ? owner.display_name : ''}</span>
+                                <span>Thành Phi</span>
                             </div>
                             <div className="profile_cnt_actions">
                                 <div className="buy-vip-action">

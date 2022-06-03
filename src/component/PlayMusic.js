@@ -21,7 +21,8 @@ import noImgPlaylist from '../img/no_playList.PNG';
 const PlayMusic = (props) => {
     //const audioRef = useRef(null);
 
-    const [{ URL_WEBSITE, accessTokenProvider,
+    const [{ URL_WEBSITE, 
+        // accessTokenProvider,
         currentPlaying,
         URL_SERVER, myplaylist,
         playWhenChangePlaylist,
@@ -134,99 +135,99 @@ const PlayMusic = (props) => {
 
 
     // get current track
-    useEffect(() => {
-        try {
-            const getCurrnentSong = async () => {
-                if (accessTokenProvider) {
-                    const responseDataPlaylistSecond = await axios.get(
-                        "https://api.spotify.com/v1/me/player/currently-playing",
-                        {
-                            headers: {
-                                Authorization: "Bearer " + accessTokenProvider,
-                                "Content-Type": "application/json",
-                            }
-                        }
-                    );
+    // useEffect(() => {
+    //     try {
+    //         const getCurrnentSong = async () => {
+    //             if (accessTokenProvider) {
+    //                 const responseDataPlaylistSecond = await axios.get(
+    //                     "https://api.spotify.com/v1/me/player/currently-playing",
+    //                     {
+    //                         headers: {
+    //                             Authorization: "Bearer " + accessTokenProvider,
+    //                             "Content-Type": "application/json",
+    //                         }
+    //                     }
+    //                 );
 
-                    if (responseDataPlaylistSecond &&
-                        responseDataPlaylistSecond.data &&
-                        responseDataPlaylistSecond.data !== "") {
-                        let getDataCurrentPlaying = {
-                            id: responseDataPlaylistSecond.data.item.id,
-                            name: responseDataPlaylistSecond.data.item.name,
-                            artists: responseDataPlaylistSecond.data.item.artists[0],
-                            image: responseDataPlaylistSecond.data.item.album.images[2].url,
-                            progress_ms: responseDataPlaylistSecond.data.progress_ms,
-                            timestamp: responseDataPlaylistSecond.data.timestamp,
-                        };
+    //                 if (responseDataPlaylistSecond &&
+    //                     responseDataPlaylistSecond.data &&
+    //                     responseDataPlaylistSecond.data !== "") {
+    //                     let getDataCurrentPlaying = {
+    //                         id: responseDataPlaylistSecond.data.item.id,
+    //                         name: responseDataPlaylistSecond.data.item.name,
+    //                         artists: responseDataPlaylistSecond.data.item.artists[0],
+    //                         image: responseDataPlaylistSecond.data.item.album.images[2].url,
+    //                         progress_ms: responseDataPlaylistSecond.data.progress_ms,
+    //                         timestamp: responseDataPlaylistSecond.data.timestamp,
+    //                     };
 
-                        dispatch({
-                            dataCurrentPlaying: getDataCurrentPlaying,
-                            type: reducerCases.SET_CURRENT_PLAYING_TRACK,
-                        })
-                    } else {
-                        const resDataCurrentPlay = await axios.get(
-                            "https://api.spotify.com/v1/me/player/recently-played",
-                            {
-                                headers: {
-                                    Authorization: "Bearer " + accessTokenProvider,
-                                    "Content-Type": "application/json",
-                                }
-                            }
-                        );
+    //                     dispatch({
+    //                         dataCurrentPlaying: getDataCurrentPlaying,
+    //                         type: reducerCases.SET_CURRENT_PLAYING_TRACK,
+    //                     })
+    //                 } else {
+    //                     const resDataCurrentPlay = await axios.get(
+    //                         "https://api.spotify.com/v1/me/player/recently-played",
+    //                         {
+    //                             headers: {
+    //                                 Authorization: "Bearer " + accessTokenProvider,
+    //                                 "Content-Type": "application/json",
+    //                             }
+    //                         }
+    //                     );
                        
-                    }
-                }
-                else if (!accessTokenProvider) {
+    //                 }
+    //             }
+    //             else if (!accessTokenProvider) {
 
-                    let refreshToken = sessionStorage.getItem('refreshToken') ? sessionStorage.getItem('refreshToken') : '';
-                    await axios.post(URL_SERVER + '/refresh', {
-                        refreshToken,
-                    })
-                        .then(async (res) => {
-                            const responseDataPlaylistSecond = await axios.get(
-                                "https://api.spotify.com/v1/me/player/currently-playing",
-                                {
-                                    headers: {
-                                        Authorization: "Bearer " + res.data.accessToken,
-                                        "Content-Type": "application/json",
-                                    }
-                                }
-                            );
-                            if (responseDataPlaylistSecond &&
-                                responseDataPlaylistSecond.data &&
-                                responseDataPlaylistSecond.data !== "") {
-                                let getDataCurrentPlaying = {
-                                    id: responseDataPlaylistSecond.data.item.id,
-                                    name: responseDataPlaylistSecond.data.item.name,
-                                    artists: responseDataPlaylistSecond.data.item.artists[0],
-                                    image: responseDataPlaylistSecond.data.item.album.images[2].url,
-                                    progress_ms: responseDataPlaylistSecond.data.progress_ms,
-                                    timestamp: responseDataPlaylistSecond.data.timestamp,
-                                };
-                                dispatch({
-                                    dataCurrentPlaying: getDataCurrentPlaying,
-                                    type: reducerCases.SET_CURRENT_PLAYING_TRACK,
-                                })
+    //                 let refreshToken = sessionStorage.getItem('refreshToken') ? sessionStorage.getItem('refreshToken') : '';
+    //                 await axios.post(URL_SERVER + '/refresh', {
+    //                     refreshToken,
+    //                 })
+    //                     .then(async (res) => {
+    //                         const responseDataPlaylistSecond = await axios.get(
+    //                             "https://api.spotify.com/v1/me/player/currently-playing",
+    //                             {
+    //                                 headers: {
+    //                                     Authorization: "Bearer " + res.data.accessToken,
+    //                                     "Content-Type": "application/json",
+    //                                 }
+    //                             }
+    //                         );
+    //                         if (responseDataPlaylistSecond &&
+    //                             responseDataPlaylistSecond.data &&
+    //                             responseDataPlaylistSecond.data !== "") {
+    //                             let getDataCurrentPlaying = {
+    //                                 id: responseDataPlaylistSecond.data.item.id,
+    //                                 name: responseDataPlaylistSecond.data.item.name,
+    //                                 artists: responseDataPlaylistSecond.data.item.artists[0],
+    //                                 image: responseDataPlaylistSecond.data.item.album.images[2].url,
+    //                                 progress_ms: responseDataPlaylistSecond.data.progress_ms,
+    //                                 timestamp: responseDataPlaylistSecond.data.timestamp,
+    //                             };
+    //                             dispatch({
+    //                                 dataCurrentPlaying: getDataCurrentPlaying,
+    //                                 type: reducerCases.SET_CURRENT_PLAYING_TRACK,
+    //                             })
 
-                            }
+    //                         }
 
-                        })
-                        .catch((err) => {
-                            console.log(err);
-                            // window.location = "/";
+    //                     })
+    //                     .catch((err) => {
+    //                         console.log(err);
+    //                         // window.location = "/";
 
-                        })
-                }
+    //                     })
+    //             }
 
 
-            };
-            getCurrnentSong();
-        } catch (e) {
-            console.log(e);
-        }
+    //         };
+    //         getCurrnentSong();
+    //     } catch (e) {
+    //         console.log(e);
+    //     }
 
-    }, [accessTokenProvider, dispatch, currentPlaying]);
+    // }, [accessTokenProvider, dispatch, currentPlaying]);
 
     // khai báo state cho Play Music
 

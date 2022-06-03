@@ -142,6 +142,9 @@ export const GlobalStyles = createGlobalStyle`
         fill:  ${(props) => props.theme.textPrimary} !important;
     }
 
+    .list-songs--info--name-artist:hover {
+        color:  ${(props) => props.theme.purplePrimary} !important;
+    }
     .list-music-header--songs, .list-music-header--songs span,
     .list-music-header--albums,
     .list-music-header--duration,
@@ -151,7 +154,8 @@ export const GlobalStyles = createGlobalStyle`
     .level-item-duration,
     .media-content-title,
     .media-content-update,
-    .media-content-artist span
+    .media-content-artist span,
+    .active
     {
         color:  ${(props) => props.theme.textPrimary} ;
     }

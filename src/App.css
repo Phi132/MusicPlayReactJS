@@ -50,9 +50,6 @@
   }
 }
 
-.active {
-  color: red;
-}
 
 .header {
   display: flex;
@@ -2264,7 +2261,6 @@ figure {
 }
 
 .list-songs--info--name-artist:hover {
-  color: red;
   text-decoration: underline;
   cursor: pointer;
 }

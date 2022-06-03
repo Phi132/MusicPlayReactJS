@@ -6,13 +6,20 @@ import { blackTheme, RoseTheme, IUxTheme, redTheme, GlobalStyles } from "./compo
 
 import AuthProvider from "./component/context/Auth";
 import Login from "./component/Login/Login";
+import { useProviderContext } from "./utils/StateProvider";
 
 
 
 const App = () => {
     const [theme, setTheme] = useState(localStorage.getItem('theme-color') || '');
 
-
+    const [{ currentPlaylistNoapi }] = useProviderContext();
+    if (!JSON.parse(localStorage.getItem('IndexSongPlaying'))) {
+        localStorage.setItem('IndexSongPlaying', 0);
+    }
+    if (!JSON.parse(localStorage.getItem('PlaylistSong'))) {
+        localStorage.setItem('PlaylistSong', JSON.stringify(currentPlaylistNoapi));
+    }
 
     useEffect(() => {
         const currentThemeColor = localStorage.getItem('theme-color');
@@ -40,10 +47,11 @@ const App = () => {
     }
 
     //api
-    const code = new URLSearchParams(window.location.search).get('code');
-    if (code) {
-        sessionStorage.setItem('code', (code));
-    }
+    // const code = new URLSearchParams(window.location.search).get('code');
+    // if (code) {
+    //     sessionStorage.setItem('code', (code));
+    // }
+
     // const [{ testAccess , dispatch}] = useProviderContext();
     // useEffect(() => {
 
@@ -60,15 +68,16 @@ const App = () => {
                 <GlobalStyles />
                 <AuthProvider>
                     {
-                        sessionStorage.getItem('code', (code)) ?
-                            // code ?
-                            (
-                                <Navigation
-                                    code={sessionStorage.getItem('code', (code))}
-                                    theme={theme}
-                                    setTheme={setTheme}
-                                />
-                            ) : <Login />
+                        // sessionStorage.getItem('code', (code)) ?
+                        // code ?
+                        (
+                            <Navigation
+                                // code={sessionStorage.getItem('code', (code))}
+                                theme={theme}
+                                setTheme={setTheme}
+                            />
+                        )
+                        // : <Login />
                     }
 
                 </AuthProvider>

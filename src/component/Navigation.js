@@ -33,7 +33,7 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 const Navigation = (props, exact) => {
-    const accessToken = Authenticantion(props.code);
+    // const accessToken = Authenticantion(props.code);
     const [search, setSearch] = useState();
     const [searchResult, setSearchResult] = useState();
     const [searchActive, setSearchActive] = useState(false);
@@ -114,81 +114,81 @@ const Navigation = (props, exact) => {
 
     //set reducer accestoken
 
-    const [{ accessTokenProvider, currentPlaylistNoapi, owner, IndexSong }, dispatch] = useProviderContext();
-    useEffect(() => {
-        dispatch({
-            accessTokenProvider: accessToken,
-            type: reducerCases.SET_TOKEN
-        })
+    // const [{ accessTokenProvider, currentPlaylistNoapi, owner, IndexSong }, dispatch] = useProviderContext();
+    // useEffect(() => {
+    //     dispatch({
+    //         accessTokenProvider: accessToken,
+    //         type: reducerCases.SET_TOKEN
+    //     })
 
-    }, [dispatch, accessToken, accessTokenProvider]);
-    useEffect(() => {
-        try {
-            const getUserProfile = async () => {
-                if (accessTokenProvider) {
-                    var response = await axios.get(
-                        "https://api.spotify.com/v1/me",
-                        {
-                            headers: {
-                                Authorization: "Bearer " + accessTokenProvider,
-                                "Content-Type": "application/json",
-                            }
-                        }
-                    )
-                }
+    // }, [dispatch, accessToken, accessTokenProvider]);
+    // useEffect(() => {
+    //     try {
+    //         const getUserProfile = async () => {
+    //             if (accessTokenProvider) {
+    //                 var response = await axios.get(
+    //                     "https://api.spotify.com/v1/me",
+    //                     {
+    //                         headers: {
+    //                             Authorization: "Bearer " + accessTokenProvider,
+    //                             "Content-Type": "application/json",
+    //                         }
+    //                     }
+    //                 )
+    //             }
 
-                if (response && response.data) {
-                    dispatch({
-                        owner: response.data,
-                        type: reducerCases.SET_OWNER
-                    });
-                }
+    //             if (response && response.data) {
+    //                 dispatch({
+    //                     owner: response.data,
+    //                     type: reducerCases.SET_OWNER
+    //                 });
+    //             }
 
-            };
-            getUserProfile();
-        } catch (e) {
-            console.log(e);
-        }
+    //         };
+    //         getUserProfile();
+    //     } catch (e) {
+    //         console.log(e);
+    //     }
 
-    }, [dispatch, accessToken, accessTokenProvider]);
+    // }, [dispatch, accessToken, accessTokenProvider]);
 
-    useEffect(() => {
-        try {
-            const getPlayList = async () => {
-                if (accessTokenProvider) {
-                    var response = await axios.get(
-                        "https://api.spotify.com/v1/me/playlists",
-                        {
-                            headers: {
-                                Authorization: "Bearer " + accessTokenProvider,
-                                "Content-Type": "application/json",
-                            }
-                        }
-                    )
-                }
+    // useEffect(() => {
+    //     try {
+    //         const getPlayList = async () => {
+    //             if (accessTokenProvider) {
+    //                 var response = await axios.get(
+    //                     "https://api.spotify.com/v1/me/playlists",
+    //                     {
+    //                         headers: {
+    //                             Authorization: "Bearer " + accessTokenProvider,
+    //                             "Content-Type": "application/json",
+    //                         }
+    //                     }
+    //                 )
+    //             }
 
-                if (response && response.data && response.data.items) {
-                    const items = response.data.items;
-                    const playLists = items.map((value, index) => {
-                        return ({
-                            name: value.name,
-                            id: value.id,
-                            image: value.images
-                        })
-                    })
-                    dispatch({
-                        playLists,
-                        type: reducerCases.SET_PLAYLIST
-                    });
-                }
+    //             if (response && response.data && response.data.items) {
+    //                 const items = response.data.items;
+    //                 const playLists = items.map((value, index) => {
+    //                     return ({
+    //                         name: value.name,
+    //                         id: value.id,
+    //                         image: value.images
+    //                     })
+    //                 })
+    //                 dispatch({
+    //                     playLists,
+    //                     type: reducerCases.SET_PLAYLIST
+    //                 });
+    //             }
 
-            };
-            getPlayList();
-        } catch (e) {
-            console.log(e);
-        }
+    //         };
+    //         getPlayList();
+    //     } catch (e) {
+    //         console.log(e);
+    //     }
 
-    }, [dispatch, accessToken, accessTokenProvider]);
+    // }, [dispatch, accessToken, accessTokenProvider]);
 
     //ramdom
     const [isClickRandom, setisClickRandom] = useState((localStorage.getItem('isRandom') === 'true' ? true : false) || false);
@@ -203,36 +203,36 @@ const Navigation = (props, exact) => {
 
     //search
 
-    useEffect(() => {
-        if (!accessToken) return
-        spotifyApi.setAccessToken(accessToken);
-    }, [accessToken]);
+    // useEffect(() => {
+    //     if (!accessToken) return
+    //     spotifyApi.setAccessToken(accessToken);
+    // }, [accessToken]);
 
-    useEffect(() => {
-        if (!search) {
-            return setSearchResult([]);
-        }
-        if (!accessToken) return
+    // useEffect(() => {
+    //     if (!search) {
+    //         return setSearchResult([]);
+    //     }
+    //     if (!accessToken) return
 
 
-        spotifyApi.searchTracks(search)
-            .then(data => {
-                setSearchResult(
-                    data.body.tracks.items.map((item) => {
-                        return {
-                            name: item.album.name,
-                            singer: item.artists[0].name,
-                            timeSong: item.duration_ms,
-                            image: item.album.images,
-                            trackUri: item.uri,
-                        };
-                    })
-                )
-            })
-            .catch((e) => {
-                console.log(e);
-            })
-    }, [search]);
+    //     spotifyApi.searchTracks(search)
+    //         .then(data => {
+    //             setSearchResult(
+    //                 data.body.tracks.items.map((item) => {
+    //                     return {
+    //                         name: item.album.name,
+    //                         singer: item.artists[0].name,
+    //                         timeSong: item.duration_ms,
+    //                         image: item.album.images,
+    //                         trackUri: item.uri,
+    //                     };
+    //                 })
+    //             )
+    //         })
+    //         .catch((e) => {
+    //             console.log(e);
+    //         })
+    // }, [search]);
 
     const inputSearch = (e) => {
         if (e.target.value === '') {
@@ -268,7 +268,7 @@ const Navigation = (props, exact) => {
     const onClickOverlay = () => {
         setisClickTheme(false)
     }
-    
+
 
     const songRef = useRef();
     // lưu bài hát hiện tại vào local storage
@@ -486,12 +486,7 @@ const Navigation = (props, exact) => {
                                 <NavLink className="profile" to="/mymusic">
                                     <div className="progile-avt">
                                         <button className="btn-theme">
-                                            <img src={isAuthenticated &&
-                                                owner && owner.images && owner.images[0].url
-                                                ? (owner.images[0].url)
-                                                : "https://cdn.icon-icons.com/icons2/2506/PNG/512/user_icon_150670.png"
-
-                                            }
+                                            <img src="/assets/img/avt01.jpg"
                                                 alt="" className="img-profile" />
                                         </button>
 
@@ -727,7 +722,7 @@ const Navigation = (props, exact) => {
                                 setvolumeSong={setvolumeSong}
 
                                 //track uri
-                                accessToken={sessionStorage.getItem('accessToken')}
+                                // accessToken={sessionStorage.getItem('accessToken')}
                                 trackUri={chooseTrack}
 
                             />
