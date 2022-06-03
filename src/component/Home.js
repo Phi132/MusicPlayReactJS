@@ -2,9 +2,15 @@ import React, { useState, useEffect } from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useProviderContext } from '../utils/StateProvider';
+import noImgPlaylist from '../img/no_playList.PNG';
+import { NavLink } from 'react-router-dom';
+import { reducerCases } from '../utils/Constains';
 
 const Home = () => {
     const [motionGalleryIndex, setMotionGalleryIndex] = useState(1);
+    const [{ arrayPlaylist }] = useProviderContext();
+
     const index = Number(motionGalleryIndex);
     useEffect(() => {
         if (index > 6) {
@@ -17,7 +23,7 @@ const Home = () => {
         //console.log(motionGalleryIndex)
         return () => clearInterval(increaseIndex)
 
-    }, [motionGalleryIndex])
+    }, [motionGalleryIndex]);
     // hình 1 
     const motion1 = () => {
         if (motionGalleryIndex === 1) {
@@ -179,7 +185,7 @@ const Home = () => {
         slidesToScroll: 5,
         draggable: false
     };
-    
+
 
     return (
         <>
@@ -270,536 +276,82 @@ const Home = () => {
                         <div className="playlist--flex">
                             <div className="playlist-section_title">
                                 <div className="title-section">
-                                    nghe gần đây
+                                    Có Thể Bạn Muốn Nghe
                                 </div>
                                 <div className="icon-section">
                                     <i className="fas fa-chevron-right"></i>
                                 </div>
                             </div>
                         </div>
-                    
+
                         <div className="playlist-section_carousel">
                             <div className="owl-carousel">
                                 <Slider {...settings}>
-                                    <div className="item">
-                                        <div className="image_music">
-                                            <figure>
-                                                <img className="listened" src="https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/9/f/1/2/9f12bebfb7d3476756c9312b418f61f8.jpg"
-                                                    alt="am nhac" />
-                                            </figure>
-                                            <div className="overlay_image_music">
-                                                <div className="overlay__heart">
-                                                    <i className="far fa-heart"></i>
-                                                </div>
-                                                <div className="overlay__play">
+                                    {
+                                        arrayPlaylist && arrayPlaylist.length > 0 &&
+                                        arrayPlaylist.map((item, index) => {
+                                            // console.log(item);
+                                            return (
+                                                <NavLink to={`/playlistpage/${item.id}`} key={index}>
+                                                    <div className="item">
+                                                        <div className="image_music">
+                                                            <figure>
+                                                                <img className="listened" src={item && item.image && item.image.url ? item.image.url : noImgPlaylist}
+                                                                    alt={item.name} />
+                                                            </figure>
+                                                            <div className="overlay_image_music">
+                                                                <div className="overlay__heart">
+                                                                    <i className="far fa-heart"></i>
+                                                                </div>
+                                                                <div className="overlay__play">
 
-                                                    <i className="fas fa-play icon-play"></i>
+                                                                    <i className="fas fa-play icon-play"></i>
 
-                                                </div>
-                                                <div className="overlay__more">
-                                                    <i className="fas fa-ellipsis-h"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="title_music">
-                                            <div>
-                                                US-UK Nghe Nhiều Nhất
-                                            </div>
-                                        </div>
-                                        <div className="name_singer_music">
-                                            <span className="name_carousel_music">
-                                                Miley Cyrus
-                                            </span>
-                                            <span>
-                                                ,
-                                            </span>
-                                            <span className="name_carousel_music">
-                                                Dua Lipa
-                                            </span>
-                                            <span>
-                                                ,
-                                            </span>
-                                            <span className="name_carousel_music">
-                                                Ariana Grande
-                                            </span>
-                                            <span>
-                                                ...
-                                            </span>
-                                        </div>
+                                                                </div>
+                                                                <div className="overlay__more">
+                                                                    <i className="fas fa-ellipsis-h"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="title_music">
+                                                            <div>
+                                                                {item.name}
+                                                            </div>
+                                                        </div>
+                                                        <div className="name_singer_music">
+                                                            {item.tracks && item.tracks && item.tracks.length > 0 ?
+                                                                item.tracks.map((value, index) => {
+                                                                    return (
 
-                                    </div>
-                                    <div className="item">
-                                        <div className="image_music">
-                                            <figure>
-                                                <img className="listened" src="https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/9/f/1/2/9f12bebfb7d3476756c9312b418f61f8.jpg"
-                                                    alt="am nhac" />
-                                            </figure>
-                                            <div className="overlay_image_music">
-                                                <div className="overlay__heart">
-                                                    <i className="far fa-heart"></i>
-                                                </div>
-                                                <div className="overlay__play">
+                                                                        <div className='name-singer-content' key={index}>
+                                                                            <span className='info-name-singer'>
+                                                                                <div className="list-songs--info--name-artist" >
+                                                                                    {value.artists[0]}
+                                                                                </div>
+                                                                                <div className='comma-playlist'>,</div>
+                                                                            </span>
+                                                                        </div>
 
-                                                    <i className="fas fa-play icon-play"></i>
+                                                                    )
+                                                                })
+                                                                : (
+                                                                    <span className="list-songs--info--name-artist" >
+                                                                        Không có nghệ sĩ nào
+                                                                    </span>
+                                                                )}
+                                                        </div>
 
-                                                </div>
-                                                <div className="overlay__more">
-                                                    <i className="fas fa-ellipsis-h"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="title_music">
-                                            <div>
-                                                US-UK Nghe Nhiều Nhất
-                                            </div>
-                                        </div>
-                                        <div className="name_singer_music">
-                                            <span className="name_carousel_music">
-                                                Miley Cyrus
-                                            </span>
-                                            <span>
-                                                ,
-                                            </span>
-                                            <span className="name_carousel_music">
-                                                Dua Lipa
-                                            </span>
-                                            <span>
-                                                ,
-                                            </span>
-                                            <span className="name_carousel_music">
-                                                Ariana Grande
-                                            </span>
-                                            <span>
-                                                ...
-                                            </span>
-                                        </div>
+                                                    </div>
+                                                </NavLink>
 
-                                    </div>
-                                    <div className="item">
-                                        <div className="image_music">
-                                            <figure>
-                                                <img className="listened" src="https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/9/f/1/2/9f12bebfb7d3476756c9312b418f61f8.jpg"
-                                                    alt="am nhac" />
-                                            </figure>
-                                            <div className="overlay_image_music">
-                                                <div className="overlay__heart">
-                                                    <i className="far fa-heart"></i>
-                                                </div>
-                                                <div className="overlay__play">
+                                            );
+                                        })
+                                    }
 
-                                                    <i className="fas fa-play icon-play"></i>
 
-                                                </div>
-                                                <div className="overlay__more">
-                                                    <i className="fas fa-ellipsis-h"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="title_music">
-                                            <div>
-                                                US-UK Nghe Nhiều Nhất
-                                            </div>
-                                        </div>
-                                        <div className="name_singer_music">
-                                            <span className="name_carousel_music">
-                                                Miley Cyrus
-                                            </span>
-                                            <span>
-                                                ,
-                                            </span>
-                                            <span className="name_carousel_music">
-                                                Dua Lipa
-                                            </span>
-                                            <span>
-                                                ,
-                                            </span>
-                                            <span className="name_carousel_music">
-                                                Ariana Grande
-                                            </span>
-                                            <span>
-                                                ...
-                                            </span>
-                                        </div>
-
-                                    </div>
-                                    <div className="item">
-                                        <div className="image_music">
-                                            <figure>
-                                                <img className="listened" src="https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/9/f/1/2/9f12bebfb7d3476756c9312b418f61f8.jpg"
-                                                    alt="am nhac" />
-                                            </figure>
-                                            <div className="overlay_image_music">
-                                                <div className="overlay__heart">
-                                                    <i className="far fa-heart"></i>
-                                                </div>
-                                                <div className="overlay__play">
-
-                                                    <i className="fas fa-play icon-play"></i>
-
-                                                </div>
-                                                <div className="overlay__more">
-                                                    <i className="fas fa-ellipsis-h"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="title_music">
-                                            <div>
-                                                US-UK Nghe Nhiều Nhất
-                                            </div>
-                                        </div>
-                                        <div className="name_singer_music">
-                                            <span className="name_carousel_music">
-                                                Miley Cyrus
-                                            </span>
-                                            <span>
-                                                ,
-                                            </span>
-                                            <span className="name_carousel_music">
-                                                Dua Lipa
-                                            </span>
-                                            <span>
-                                                ,
-                                            </span>
-                                            <span className="name_carousel_music">
-                                                Ariana Grande
-                                            </span>
-                                            <span>
-                                                ...
-                                            </span>
-                                        </div>
-
-                                    </div>
-                                    <div className="item">
-                                        <div className="image_music">
-                                            <figure>
-                                                <img className="listened" src="https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/9/f/1/2/9f12bebfb7d3476756c9312b418f61f8.jpg"
-                                                    alt="am nhac" />
-                                            </figure>
-                                            <div className="overlay_image_music">
-                                                <div className="overlay__heart">
-                                                    <i className="far fa-heart"></i>
-                                                </div>
-                                                <div className="overlay__play">
-
-                                                    <i className="fas fa-play icon-play"></i>
-
-                                                </div>
-                                                <div className="overlay__more">
-                                                    <i className="fas fa-ellipsis-h"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="title_music">
-                                            <div>
-                                                US-UK Nghe Nhiều Nhất
-                                            </div>
-                                        </div>
-                                        <div className="name_singer_music">
-                                            <span className="name_carousel_music">
-                                                Miley Cyrus
-                                            </span>
-                                            <span>
-                                                ,
-                                            </span>
-                                            <span className="name_carousel_music">
-                                                Dua Lipa
-                                            </span>
-                                            <span>
-                                                ,
-                                            </span>
-                                            <span className="name_carousel_music">
-                                                Ariana Grande
-                                            </span>
-                                            <span>
-                                                ...
-                                            </span>
-                                        </div>
-
-                                    </div>
-                                    <div className="item">
-                                        <div className="image_music">
-                                            <figure>
-                                                <img className="listened" src="https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/9/f/1/2/9f12bebfb7d3476756c9312b418f61f8.jpg"
-                                                    alt="am nhac" />
-                                            </figure>
-                                            <div className="overlay_image_music">
-                                                <div className="overlay__heart">
-                                                    <i className="far fa-heart"></i>
-                                                </div>
-                                                <div className="overlay__play">
-
-                                                    <i className="fas fa-play icon-play"></i>
-
-                                                </div>
-                                                <div className="overlay__more">
-                                                    <i className="fas fa-ellipsis-h"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="title_music">
-                                            <div>
-                                                US-UK Nghe Nhiều Nhất
-                                            </div>
-                                        </div>
-                                        <div className="name_singer_music">
-                                            <span className="name_carousel_music">
-                                                Miley Cyrus
-                                            </span>
-                                            <span>
-                                                ,
-                                            </span>
-                                            <span className="name_carousel_music">
-                                                Dua Lipa
-                                            </span>
-                                            <span>
-                                                ,
-                                            </span>
-                                            <span className="name_carousel_music">
-                                                Ariana Grande
-                                            </span>
-                                            <span>
-                                                ...
-                                            </span>
-                                        </div>
-
-                                    </div>
-                                    <div className="item">
-                                        <div className="image_music">
-                                            <figure>
-                                                <img className="listened" src="https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/9/f/1/2/9f12bebfb7d3476756c9312b418f61f8.jpg"
-                                                    alt="am nhac" />
-                                            </figure>
-                                            <div className="overlay_image_music">
-                                                <div className="overlay__heart">
-                                                    <i className="far fa-heart"></i>
-                                                </div>
-                                                <div className="overlay__play">
-
-                                                    <i className="fas fa-play icon-play"></i>
-
-                                                </div>
-                                                <div className="overlay__more">
-                                                    <i className="fas fa-ellipsis-h"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="title_music">
-                                            <div>
-                                                US-UK Nghe Nhiều Nhất
-                                            </div>
-                                        </div>
-                                        <div className="name_singer_music">
-                                            <span className="name_carousel_music">
-                                                Miley Cyrus
-                                            </span>
-                                            <span>
-                                                ,
-                                            </span>
-                                            <span className="name_carousel_music">
-                                                Dua Lipa
-                                            </span>
-                                            <span>
-                                                ,
-                                            </span>
-                                            <span className="name_carousel_music">
-                                                Ariana Grande
-                                            </span>
-                                            <span>
-                                                ...
-                                            </span>
-                                        </div>
-
-                                    </div>
-                                    <div className="item">
-                                        <div className="image_music">
-                                            <figure>
-                                                <img className="listened" src="https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/9/f/1/2/9f12bebfb7d3476756c9312b418f61f8.jpg"
-                                                    alt="am nhac" />
-                                            </figure>
-                                            <div className="overlay_image_music">
-                                                <div className="overlay__heart">
-                                                    <i className="far fa-heart"></i>
-                                                </div>
-                                                <div className="overlay__play">
-
-                                                    <i className="fas fa-play icon-play"></i>
-
-                                                </div>
-                                                <div className="overlay__more">
-                                                    <i className="fas fa-ellipsis-h"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="title_music">
-                                            <div>
-                                                US-UK Nghe Nhiều Nhất
-                                            </div>
-                                        </div>
-                                        <div className="name_singer_music">
-                                            <span className="name_carousel_music">
-                                                Miley Cyrus
-                                            </span>
-                                            <span>
-                                                ,
-                                            </span>
-                                            <span className="name_carousel_music">
-                                                Dua Lipa
-                                            </span>
-                                            <span>
-                                                ,
-                                            </span>
-                                            <span className="name_carousel_music">
-                                                Ariana Grande
-                                            </span>
-                                            <span>
-                                                ...
-                                            </span>
-                                        </div>
-
-                                    </div>
-                                    <div className="item">
-                                        <div className="image_music">
-                                            <figure>
-                                                <img className="listened" src="https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/9/f/1/2/9f12bebfb7d3476756c9312b418f61f8.jpg"
-                                                    alt="am nhac" />
-                                            </figure>
-                                            <div className="overlay_image_music">
-                                                <div className="overlay__heart">
-                                                    <i className="far fa-heart"></i>
-                                                </div>
-                                                <div className="overlay__play">
-
-                                                    <i className="fas fa-play icon-play"></i>
-
-                                                </div>
-                                                <div className="overlay__more">
-                                                    <i className="fas fa-ellipsis-h"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="title_music">
-                                            <div>
-                                                US-UK Nghe Nhiều Nhất
-                                            </div>
-                                        </div>
-                                        <div className="name_singer_music">
-                                            <span className="name_carousel_music">
-                                                Miley Cyrus
-                                            </span>
-                                            <span>
-                                                ,
-                                            </span>
-                                            <span className="name_carousel_music">
-                                                Dua Lipa
-                                            </span>
-                                            <span>
-                                                ,
-                                            </span>
-                                            <span className="name_carousel_music">
-                                                Ariana Grande
-                                            </span>
-                                            <span>
-                                                ...
-                                            </span>
-                                        </div>
-
-                                    </div>
-                                    <div className="item">
-                                        <div className="image_music">
-                                            <figure>
-                                                <img className="listened" src="https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/9/f/1/2/9f12bebfb7d3476756c9312b418f61f8.jpg"
-                                                    alt="am nhac" />
-                                            </figure>
-                                            <div className="overlay_image_music">
-                                                <div className="overlay__heart">
-                                                    <i className="far fa-heart"></i>
-                                                </div>
-                                                <div className="overlay__play">
-
-                                                    <i className="fas fa-play icon-play"></i>
-
-                                                </div>
-                                                <div className="overlay__more">
-                                                    <i className="fas fa-ellipsis-h"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="title_music">
-                                            <div>
-                                                US-UK Nghe Nhiều Nhất
-                                            </div>
-                                        </div>
-                                        <div className="name_singer_music">
-                                            <span className="name_carousel_music">
-                                                Miley Cyrus
-                                            </span>
-                                            <span>
-                                                ,
-                                            </span>
-                                            <span className="name_carousel_music">
-                                                Dua Lipa
-                                            </span>
-                                            <span>
-                                                ,
-                                            </span>
-                                            <span className="name_carousel_music">
-                                                Ariana Grande
-                                            </span>
-                                            <span>
-                                                ...
-                                            </span>
-                                        </div>
-
-                                    </div>
 
                                 </Slider>
-                                {/* <div className="item">
-                                    <div className="image_music">
-                                        <figure>
-                                            <img className="listened" src="https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/9/f/1/2/9f12bebfb7d3476756c9312b418f61f8.jpg"
-                                                alt="am nhac" />
-                                        </figure>
-                                        <div className="overlay_image_music">
-                                            <div className="overlay__heart">
-                                                <i className="far fa-heart"></i>
-                                            </div>
-                                            <div className="overlay__play">
 
-                                                <i className="fas fa-play icon-play"></i>
-
-                                            </div>
-                                            <div className="overlay__more">
-                                                <i className="fas fa-ellipsis-h"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="title_music">
-                                        <div>
-                                            US-UK Nghe Nhiều Nhất
-                                        </div>
-                                    </div>
-                                    <div className="name_singer_music">
-                                        <span className="name_carousel_music">
-                                            Miley Cyrus
-                                        </span>
-                                        <span>
-                                            ,
-                                        </span>
-                                        <span className="name_carousel_music">
-                                            Dua Lipa
-                                        </span>
-                                        <span>
-                                            ,
-                                        </span>
-                                        <span className="name_carousel_music">
-                                            Ariana Grande
-                                        </span>
-                                        <span>
-                                            ...
-                                        </span>
-                                    </div>
-
-                                </div> */}
 
                             </div>
                         </div>

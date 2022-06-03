@@ -17,8 +17,30 @@ import VolumeSong from './VolumeSong';
 import Chart from './ChartPage/Chart';
 import { Auth } from './context/Auth';
 import Maintance from './Maintance/Maintance';
+import Authenticantion from './Login/Authenticantion';
+import SpotifyWebApi from 'spotify-web-api-node';
+import { reducerCases } from '../utils/Constains';
+import { useProviderContext } from '../utils/StateProvider';
+import { initalState } from '../utils/reducer';
+import axios from 'axios';
+import { ResponsiveEmbed } from 'react-bootstrap';
+import PlaylistPage from './Playlist/PlaylistPage';
+
+
+
+const spotifyApi = new SpotifyWebApi({
+    clientId: 'c358a6d11119494fb227b7e5aba6be5f',
+});
 
 const Navigation = (props, exact) => {
+    const accessToken = Authenticantion(props.code);
+    const [search, setSearch] = useState();
+    const [searchResult, setSearchResult] = useState();
+    const [searchActive, setSearchActive] = useState(false);
+
+    const [chooseTrack, setChooseTrack] = useState();
+
+
     const [songs] = useState([
         {
             name: "Sóng",
@@ -84,9 +106,90 @@ const Navigation = (props, exact) => {
             timeSong: "03:16"
         },
     ]);
+
     const [currentIndex, setCurrentIndex] = useState(Number(localStorage.getItem('currentIndex')) || 0);
     const [isPlaying, setisPlaying] = useState(false);
     const [clickSong, setClickSong] = useState(false);
+
+
+    //set reducer accestoken
+
+    const [{ accessTokenProvider, currentPlaylistNoapi, owner, IndexSong }, dispatch] = useProviderContext();
+    useEffect(() => {
+        dispatch({
+            accessTokenProvider: accessToken,
+            type: reducerCases.SET_TOKEN
+        })
+
+    }, [dispatch, accessToken, accessTokenProvider]);
+    useEffect(() => {
+        try {
+            const getUserProfile = async () => {
+                if (accessTokenProvider) {
+                    var response = await axios.get(
+                        "https://api.spotify.com/v1/me",
+                        {
+                            headers: {
+                                Authorization: "Bearer " + accessTokenProvider,
+                                "Content-Type": "application/json",
+                            }
+                        }
+                    )
+                }
+
+                if (response && response.data) {
+                    dispatch({
+                        owner: response.data,
+                        type: reducerCases.SET_OWNER
+                    });
+                }
+
+            };
+            getUserProfile();
+        } catch (e) {
+            console.log(e);
+        }
+
+    }, [dispatch, accessToken, accessTokenProvider]);
+
+    useEffect(() => {
+        try {
+            const getPlayList = async () => {
+                if (accessTokenProvider) {
+                    var response = await axios.get(
+                        "https://api.spotify.com/v1/me/playlists",
+                        {
+                            headers: {
+                                Authorization: "Bearer " + accessTokenProvider,
+                                "Content-Type": "application/json",
+                            }
+                        }
+                    )
+                }
+
+                if (response && response.data && response.data.items) {
+                    const items = response.data.items;
+                    const playLists = items.map((value, index) => {
+                        return ({
+                            name: value.name,
+                            id: value.id,
+                            image: value.images
+                        })
+                    })
+                    dispatch({
+                        playLists,
+                        type: reducerCases.SET_PLAYLIST
+                    });
+                }
+
+            };
+            getPlayList();
+        } catch (e) {
+            console.log(e);
+        }
+
+    }, [dispatch, accessToken, accessTokenProvider]);
+
     //ramdom
     const [isClickRandom, setisClickRandom] = useState((localStorage.getItem('isRandom') === 'true' ? true : false) || false);
     //loop song
@@ -98,26 +201,78 @@ const Navigation = (props, exact) => {
     // changeTheme
     const setTheme = props.setTheme;
 
+    //search
+
+    useEffect(() => {
+        if (!accessToken) return
+        spotifyApi.setAccessToken(accessToken);
+    }, [accessToken]);
+
+    useEffect(() => {
+        if (!search) {
+            return setSearchResult([]);
+        }
+        if (!accessToken) return
+
+
+        spotifyApi.searchTracks(search)
+            .then(data => {
+                setSearchResult(
+                    data.body.tracks.items.map((item) => {
+                        return {
+                            name: item.album.name,
+                            singer: item.artists[0].name,
+                            timeSong: item.duration_ms,
+                            image: item.album.images,
+                            trackUri: item.uri,
+                        };
+                    })
+                )
+            })
+            .catch((e) => {
+                console.log(e);
+            })
+    }, [search]);
+
+    const inputSearch = (e) => {
+        if (e.target.value === '') {
+            console.log("rong");
+            setSearchActive(false);
+        } else {
+            setSearch(e.target.value);
+            setSearchActive(true);
+        }
+
+    };
+    const onKeyUpSearch = (e) => {
+        if (e.keyCode === 32) {
+            function onKeyup(e) {
+                e.preventDefault();
+                if (e.keyCode === 32) {
+                    setisPlaying(isPlaying);
+                }
+            }
+            window.addEventListener('keyup', onKeyup);
+
+        }
+
+    }
+    const LeaveSearch = () => {
+        setSearchActive(false);
+    }
+    const clickSearch = () => {
+        setSearchActive(true);
+    }
+
     // xử lí khi click vào overlay
     const onClickOverlay = () => {
         setisClickTheme(false)
     }
-    // xử lí khi click vào next song
-    if (currentIndex > songs.length - 1) {
-        setCurrentIndex(0)
-    }
+    
 
-    // xử lí khi click vào previous song
-    if (currentIndex < 0) {
-        setCurrentIndex(songs.length - 1)
-    }
     const songRef = useRef();
-
     // lưu bài hát hiện tại vào local storage
-    useEffect(() => {
-        localStorage.setItem('currentIndex', currentIndex)
 
-    }, [currentIndex])
     //xử lí khi click vào theme đóng mở theme
 
     const onClickTheme = () => {
@@ -142,8 +297,14 @@ const Navigation = (props, exact) => {
     const onAcceptChangeTheme = (colorTheme) => {
         setTheme(colorTheme)
     }
+    //choose song
+    const chooseTrackSong = (trackUri) => {
+        console.log(trackUri);
+        setChooseTrack(trackUri)
+    }
     // lấy context
     const { isAuthenticated } = useContext(Auth)
+
     return (
         <>
             <Helmet>
@@ -174,43 +335,51 @@ const Navigation = (props, exact) => {
                                     </div>
                                 </div>
 
-                                <div className="header-search">
+                                <div className={searchActive
+                                    ? "header-search header-search-active"
+                                    : "header-search"}
+
+                                >
                                     <i className="fas fa-search"></i>
-                                    <input className="input-search-header" type="search" placeholder="Search" aria-label="Search" />
+                                    <input className="input-search-header" type="search"
+                                        placeholder="Nhập tên bài hát, ca sĩ, MV..."
+                                        onChange={(e) => inputSearch(e)}
+                                        onClick={clickSearch}
+                                        onKeyUp={onKeyUpSearch}
+                                        // onBlur={LeaveSearch}
+                                        aria-label="Search" />
+                                    {
+                                        searchResult
+                                            && searchResult.length > 0 ?
+                                            (
+                                                <div className={!searchActive ? "d-none" : "search-more-click"}
+                                                >
+                                                    <ul className="search-more">
 
-                                    <div className="search-more-click">
-                                        <ul className="search-more">
-                                            <li className="search-more-item">
-                                                <i className="fas fa-search"></i>
-                                                <div className="text-search">rồi tới luôn</div>
-                                            </li>
-                                            <li className="search-more-item">
+                                                        {searchResult.map((item, index) => {
 
-                                                <i className="fas fa-search"></i>
+                                                            return (
+                                                                <li className="search-more-item" key={index} onClick={() => chooseTrackSong(item.trackUri)}>
+                                                                    <i className="fas fa-search"></i>
+                                                                    <div className="text-search">{item.name} - {item.singer}</div>
+                                                                </li>
+                                                            )
+                                                        })
 
-                                                <div className="text-search">rồi tới luôn</div>
-                                            </li>
-                                            <li className="search-more-item">
+                                                        }
 
-                                                <i className="fas fa-search"></i>
+                                                    </ul>
+                                                </div>
+                                            ) : (
+                                                <div className={!searchActive ? "d-none" : "search-more-click"}
+                                                >
+                                                    <ul className="search-more">
 
-                                                <div className="text-search">rồi tới luôn</div>
-                                            </li>
-                                            <li className="search-more-item">
+                                                    </ul>
+                                                </div>
+                                            )
 
-                                                <i className="fas fa-search"></i>
-
-                                                <div className="text-search">rồi tới luôn</div>
-                                            </li>
-                                            <li className="search-more-item">
-
-                                                <i className="fas fa-search"></i>
-
-                                                <div className="text-search">rồi tới luôn</div>
-                                            </li>
-
-                                        </ul>
-                                    </div>
+                                    }
 
                                 </div>
                             </div>
@@ -317,8 +486,9 @@ const Navigation = (props, exact) => {
                                 <NavLink className="profile" to="/mymusic">
                                     <div className="progile-avt">
                                         <button className="btn-theme">
-                                            <img src={isAuthenticated
-                                                ? "https://s120-ava-talk.zadn.vn/7/4/3/5/61/120/162864bc3fb9fea846983427858d3dd1.jpg"
+                                            <img src={isAuthenticated &&
+                                                owner && owner.images && owner.images[0].url
+                                                ? (owner.images[0].url)
                                                 : "https://cdn.icon-icons.com/icons2/2506/PNG/512/user_icon_150670.png"
 
                                             }
@@ -338,14 +508,21 @@ const Navigation = (props, exact) => {
                         <div className="home_user-1" >
                             <div className="home_user-2" >
                                 <Switch>
-
+                                    <Route path="/playlistpage">
+                                        <PlaylistPage
+                                            clickSong={clickSong}
+                                            setClickSong={setClickSong}
+                                            isPlaying={isPlaying}
+                                            setisPlaying={setisPlaying}
+                                        />
+                                    </Route>
                                     <Route exact={true} path="/zingchart">
                                         <Chart />
                                     </Route>
                                     <Route path="/mymusic">
                                         <MyMusic
                                             currentIndex={currentIndex}
-                                            songs={songs}
+                                            // songs={myplaylist}
                                             clickSong={clickSong}
                                             setClickSong={setClickSong}
                                             //
@@ -528,7 +705,7 @@ const Navigation = (props, exact) => {
                         {
 
                             <PlayMusic
-                                songs={songs}
+                                // songs={songs}
                                 currentIndex={currentIndex}
                                 setCurrentIndex={setCurrentIndex}
                                 clickSong={clickSong}
@@ -548,6 +725,10 @@ const Navigation = (props, exact) => {
                                 // volume level
                                 volumeSong={volumeSong}
                                 setvolumeSong={setvolumeSong}
+
+                                //track uri
+                                accessToken={sessionStorage.getItem('accessToken')}
+                                trackUri={chooseTrack}
 
                             />
 
@@ -629,7 +810,7 @@ const Navigation = (props, exact) => {
                                             </div>
 
                                             <div className="item__option theme-option">
-                                                <div className="item__option--image_iu theme-option-picture">
+                                                <div className="ionClicktem__option--image_iu theme-option-picture">
 
                                                     <figure>
                                                         <img src="https://zmp3-static.zadn.vn/skins/zmp3-v6.1/images/theme/iu.jpg"

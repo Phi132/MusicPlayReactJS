@@ -3,8 +3,9 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
-    NavLink,
+    // Link,
+    // NavLink,
+    // useHistory,
 
 } from "react-router-dom";
 import { Helmet } from "react-helmet";
@@ -20,6 +21,8 @@ import MV from './MV';
 import Upload from './Upload';
 import { Auth } from '../context/Auth'
 import FormLogin from '../formLogin/FormLogin';
+import { useProviderContext } from '../../utils/StateProvider';
+import { reducerCases } from '../../utils/Constains';
 const MyMusic = (props) => {
     const [mymusics] = useState([
         {
@@ -52,6 +55,17 @@ const MyMusic = (props) => {
         }
     ]);
 
+    const [{ owner, myplaylist, IndexSong, currentPlaylistNoapi }, dispatch] = useProviderContext();
+
+    useEffect(() => {
+        dispatch({
+            dataPlaylistNoapi: myplaylist,
+            type: reducerCases.SET_CURRENT_PLAYING_NO_API
+        });
+
+    }, []);
+    console.log("index", IndexSong);
+
     const songs = props.songs
     var CurrentIndex = props.currentIndex;
 
@@ -61,7 +75,10 @@ const MyMusic = (props) => {
     }
     // click btn log out
     const logOutToggle = () => {
-        toggleAuth();
+        // toggleAuth();
+        sessionStorage.removeItem('code');
+
+        window.location.reload();
     }
     //load Auth Context
     const { isAuthenticated, toggleAuth } = useContext(Auth)
@@ -70,7 +87,7 @@ const MyMusic = (props) => {
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>Nhạc Cá Nhân | Tận Hưởng Âm Nhạc Thôi Nào</title>
-                
+
             </Helmet>
 
             {isAuthenticated ? (
@@ -79,11 +96,15 @@ const MyMusic = (props) => {
                     <div className="user_profile_header">
                         <div className="profile_container">
                             <div className="profile_cnt_avt">
-                                <img src="https://s120-ava-talk.zadn.vn/7/4/3/5/61/120/162864bc3fb9fea846983427858d3dd1.jpg"
+                                <img src={
+                                    owner && owner.images && owner.images[0].url
+                                        ? (owner.images[0].url)
+                                        : "https://cdn.icon-icons.com/icons2/2506/PNG/512/user_icon_150670.png"
+                                }
                                     className="avt_profile" alt="avt Profile" />
                             </div>
                             <div className="profile_cnt_name">
-                                <span>Thành Phi</span>
+                                <span>{owner && owner.display_name ? owner.display_name : ''}</span>
                             </div>
                             <div className="profile_cnt_actions">
                                 <div className="buy-vip-action">
@@ -160,7 +181,7 @@ const MyMusic = (props) => {
 
                             <Route exact={true} path="/mymusic">
                                 <OverviewMM
-                                    songs={songs}
+                                    // songs={songs}
                                     CurrentIndex={CurrentIndex}
                                     setCurrentIndex={props.setCurrentIndex}
                                     setisPlaying={props.setisPlaying}
@@ -170,7 +191,7 @@ const MyMusic = (props) => {
                             </Route>
                             <Route exact={true} path="/mymusic/libary/song">
                                 <Libary
-                                    songs={songs}
+                                    // songs={songs}
                                     currentIndex={CurrentIndex}
                                     setCurrentIndex={props.setCurrentIndex}
                                     isPlaying={props.isPlaying}

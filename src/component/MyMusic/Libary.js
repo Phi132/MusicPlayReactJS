@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
-import MyMusicActive from './MyMusicActive';
+import React from 'react';
+import { useProviderContext } from '../../utils/StateProvider';
+
 
 const Libary = (props) => {
-   
-    const songs = props.songs
+
+    const [{ myplaylist }, dispatch] = useProviderContext();
+
+    const songs = props.songs;
     var CurrentIndex = props.currentIndex;
     const onClickSong = (index) => {
         props.setCurrentIndex(index)
@@ -21,7 +24,7 @@ const Libary = (props) => {
 
                             <div className="playlist">
                                 {
-                                    songs.map((song, index) => {
+                                    myplaylist.map((song, index) => {
 
                                         return (
 

@@ -83,10 +83,11 @@ export const GlobalStyles = createGlobalStyle`
         color: ${(props) => props.theme.textPrimary};
     }
     .header-search i, .input-search-header::placeholder, .slick-prev:before, .slick-next:before,
-    .title_music, .name_singer_music span {
+    .title_music, .name_singer_music span, 
+    .search-more-item i, .text-search  {
         color: ${(props) => props.theme.textPrimary};
     }
-    .search-more-click {
+    .search-more-click, .header-search-active{
         background-color: ${(props) => props.theme.primaryBg};
     }
     .btn-theme, .btn-theme-link {
@@ -132,8 +133,27 @@ export const GlobalStyles = createGlobalStyle`
     }
     
     .receive-vip, .log-out, .profile_cnt_name, .nav_item-link,
-    .song-list-header, .name .title, .timeSong {
-        color: ${(props) => props.theme.textPrimary};
+    .song-list-header, .name .title, .timeSong,
+    .playlist-title, .playlist-title span {
+        color:  ${(props) => props.theme.textPrimary};
+    }
+
+    .bpXBVL svg {
+        fill:  ${(props) => props.theme.textPrimary} !important;
+    }
+
+    .list-music-header--songs, .list-music-header--songs span,
+    .list-music-header--albums,
+    .list-music-header--duration,
+    .list-songs--info--name.title,
+    .list-songs--info--artist span,
+    .album-info,
+    .level-item-duration,
+    .media-content-title,
+    .media-content-update,
+    .media-content-artist span
+    {
+        color:  ${(props) => props.theme.textPrimary} ;
     }
     .sidebar-active {
         border-left: 3px solid ${(props) => props.theme.purplePrimary} !important;

@@ -1,29 +1,25 @@
-import React, { useState, useEffect, useTheme } from "react";
+import React, { useState, useEffect } from "react";
 import './App.css';
 import Navigation from "./component/Navigation";
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import { blackTheme, RoseTheme, IUxTheme, redTheme, GlobalStyles } from "./component/controlTheme/Theme";
 
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    NavLink,
-
-} from "react-router-dom";
 import AuthProvider from "./component/context/Auth";
+import Login from "./component/Login/Login";
+
 
 
 const App = () => {
     const [theme, setTheme] = useState(localStorage.getItem('theme-color') || '');
+
+
 
     useEffect(() => {
         const currentThemeColor = localStorage.getItem('theme-color');
         if (currentThemeColor) {
             localStorage.setItem('theme-color', theme);
         }
-    }, [])
+    }, [theme]);
 
 
     const conditionTheme = () => {
@@ -42,23 +38,46 @@ const App = () => {
             return redTheme
         }
     }
+
+    //api
+    const code = new URLSearchParams(window.location.search).get('code');
+    if (code) {
+        sessionStorage.setItem('code', (code));
+    }
+    // const [{ testAccess , dispatch}] = useProviderContext();
+    // useEffect(() => {
+
+    //     console.log("testtt ", testAccess);
+    // }, [testAccess])
+
     return (
+
+
         <>
             <ThemeProvider
                 theme={conditionTheme}
             >
                 <GlobalStyles />
                 <AuthProvider>
-                    <Navigation
-                        theme={theme}
-                        setTheme={setTheme}
-                    />
+                    {
+                        sessionStorage.getItem('code', (code)) ?
+                            // code ?
+                            (
+                                <Navigation
+                                    code={sessionStorage.getItem('code', (code))}
+                                    theme={theme}
+                                    setTheme={setTheme}
+                                />
+                            ) : <Login />
+                    }
+
                 </AuthProvider>
 
             </ThemeProvider>
 
 
         </>
+
 
     );
 
