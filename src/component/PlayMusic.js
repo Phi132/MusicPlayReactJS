@@ -537,7 +537,7 @@ const PlayMusic = (props) => {
         <div className="play__music">
             <div className="col-md-3 player-left">
                 <div className="player-controll-left">
-                    <NavLink to={pathCurrentSongPlaying} exact={true} className="player-controll-left--link">
+                    <NavLink to={pathCurrentSongPlaying} className="player-controll-left--link">
                         <div className="avt-song"
                             style={isPlaying ? avtStyleActive : avtStyle}
                         ></div>

@@ -56,8 +56,9 @@ function PlaylistPage(props) {
       }
     })
 
-  }, [props.clickSong]);
+  }, [props.clickSong, selectedPlaylistIdUrl]);
 
+  
   //set current index khi load lại
 
 
@@ -266,7 +267,7 @@ function PlaylistPage(props) {
               {
                 currentPlaylistNoapi && currentPlaylistNoapi.length > 1 ?
                   currentPlaylistNoapi.map((value, index) => {
-                   
+
                     return (
                       <div className={
                         (index === JSON.parse(localStorage.getItem('IndexSongPlaying')))
