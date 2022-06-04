@@ -198,53 +198,57 @@ export const initalState = {
                 },
                 {
                     id: "/playlistpage/ctbmn4_song2",
-                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/3/0/7/4/30746500c0291bb258cdea468f4beb2f.jpg" },
-                    name: "Upside Down",
+                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/c/9/8/6/c98654ad5a84c2d920e379d2db950fba.jpg" },
+                    name: "Vượt Chướng Ngại Vật",
                     artists: [
-                        "Dế Choắt",
+                        "Lil Wuyn",
+                        "Blacka"
                     ],
-                    duration: "04:17",
-                    uri: "/assets/song/ctbmn4/song1.mp3",
+                    duration: "03:06",
+                    uri: "/assets/song/ctbmn4/song2.mp3",
                 },
                 {
                     id: "/playlistpage/ctbmn4_song3",
-                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/3/0/7/4/30746500c0291bb258cdea468f4beb2f.jpg" },
-                    name: "Upside Down",
+                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/3/9/7/6/39769ff738ef06506d75ab163ef697e2.jpg" },
+                    name: "Chọn Bạn Mà Chơi",
                     artists: [
-                        "Dế Choắt",
+                        "Rtee",
                     ],
-                    duration: "04:17",
-                    uri: "/assets/song/ctbmn4/song1.mp3",
+                    duration: "03:39",
+                    uri: "/assets/song/ctbmn4/song3.mp3",
                 },
                 {
                     id: "/playlistpage/ctbmn4_song4",
-                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/3/0/7/4/30746500c0291bb258cdea468f4beb2f.jpg" },
-                    name: "Upside Down",
+                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/5/b/9/6/5b962e4e5d616a8c862306745527f96f.jpg" },
+                    name: "Đêm Nay Không Ngủ",
                     artists: [
-                        "Dế Choắt",
+                        "Karik",
                     ],
-                    duration: "04:17",
-                    uri: "/assets/song/ctbmn4/song1.mp3",
+                    duration: "03:08",
+                    uri: "/assets/song/ctbmn4/song4.mp3",
                 },
                 {
                     id: "/playlistpage/ctbmn4_song5",
-                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/3/0/7/4/30746500c0291bb258cdea468f4beb2f.jpg" },
-                    name: "Upside Down",
+                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/6/3/4/f/634f2223e10d196ed8f049464eb5ae66.jpg" },
+                    name: "Xin Đừng Nhấc Máy",
                     artists: [
-                        "Dế Choắt",
+                        "B Ray",
+                        "Han Sara",
+                        "Great",
                     ],
-                    duration: "04:17",
-                    uri: "/assets/song/ctbmn4/song1.mp3",
+                    duration: "03:07",
+                    uri: "/assets/song/ctbmn4/song5.mp3",
                 },
                 {
                     id: "/playlistpage/ctbmn4_song6",
-                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/3/0/7/4/30746500c0291bb258cdea468f4beb2f.jpg" },
-                    name: "Upside Down",
+                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/covers/3/f/3fb2db6cccf4a23383383394b28b2b31_1513592477.jpg" },
+                    name: "Ở Trong Thành Phố (Masew Mix)",
                     artists: [
-                        "Dế Choắt",
+                        "B Ray",
+                        "Masew",
                     ],
-                    duration: "04:17",
-                    uri: "/assets/song/ctbmn4/song1.mp3",
+                    duration: "03:05",
+                    uri: "/assets/song/ctbmn4/song6.mp3",
                 },
             ]
         },
@@ -266,80 +270,77 @@ export const initalState = {
                 },
                 {
                     id: "/playlistpage/ctbmn5_song2",
-                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/e/7/b/5/e7b5b51e9ce0d4327ffd811c9815770c.jpg" },
-                    name: "True Love",
+                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/b/1/4/c/b14c4a9a024761739f41299b3cfdd782.jpg" },
+                    name: "WAIT FOR U",
                     artists: [
-                        "Kanye West",
-                        "Xxxtentacion"
+                        "Future",
+                        "Drake",
+                        "Tems"
                     ],
-                    duration: "02:29",
-                    uri: "/assets/song/ctbmn5/song1.mp3",
+                    duration: "03:10",
+                    uri: "/assets/song/ctbmn5/song2.mp3",
                 },
                 {
                     id: "/playlistpage/ctbmn5_song3",
                     image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/e/7/b/5/e7b5b51e9ce0d4327ffd811c9815770c.jpg" },
-                    name: "True Love",
+                    name: "WORST DAY",
                     artists: [
-                        "Kanye West",
-                        "Xxxtentacion"
+                        "Future",
                     ],
-                    duration: "02:29",
-                    uri: "/assets/song/ctbmn5/song1.mp3",
+                    duration: "03:07",
+                    uri: "/assets/song/ctbmn5/song3.mp3",
                 },
                 {
                     id: "/playlistpage/ctbmn5_song4",
-                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/e/7/b/5/e7b5b51e9ce0d4327ffd811c9815770c.jpg" },
-                    name: "True Love",
+                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/9/1/0/5/910520b33f04a523369746a702e5c7ea.jpg" },
+                    name: "Prada",
                     artists: [
-                        "Kanye West",
-                        "Xxxtentacion"
+                        "24KGoldn",
+                        "Lil Tecca"
                     ],
-                    duration: "02:29",
-                    uri: "/assets/song/ctbmn5/song1.mp3",
+                    duration: "02:32",
+                    uri: "/assets/song/ctbmn5/song4.mp3",
                 },
                 {
                     id: "/playlistpage/ctbmn5_song5",
-                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/e/7/b/5/e7b5b51e9ce0d4327ffd811c9815770c.jpg" },
-                    name: "True Love",
+                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w165_r1x1_webp/cover/a/0/d/6/a0d65e420bc58d6f1f3bb08886cb1dc5.jpg" },
+                    name: "Old Town Road",
                     artists: [
-                        "Kanye West",
-                        "Xxxtentacion"
+                        "Lil Nas X",
                     ],
-                    duration: "02:29",
-                    uri: "/assets/song/ctbmn5/song1.mp3",
+                    duration: "01:53",
+                    uri: "/assets/song/ctbmn5/song5.mp3",
                 },
                 {
                     id: "/playlistpage/ctbmn5_song6",
-                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/e/7/b/5/e7b5b51e9ce0d4327ffd811c9815770c.jpg" },
-                    name: "True Love",
+                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w165_r1x1_webp/cover/8/3/9/5/8395c8b202b930eec67dfc88e3a2e6f8.jpg" },
+                    name: "At My Worst",
                     artists: [
-                        "Kanye West",
-                        "Xxxtentacion"
+                        "Sympton X Collective",
                     ],
-                    duration: "02:29",
-                    uri: "/assets/song/ctbmn5/song1.mp3",
+                    duration: "02:50",
+                    uri: "/assets/song/ctbmn5/song6.mp3",
                 },
                 {
                     id: "/playlistpage/ctbmn5_song7",
-                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/e/7/b/5/e7b5b51e9ce0d4327ffd811c9815770c.jpg" },
-                    name: "True Love",
+                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/5/d/9/d/5d9dca818daf9e61c85cb88c8d08e1f2.jpg" },
+                    name: "Something Just Like This",
                     artists: [
-                        "Kanye West",
-                        "Xxxtentacion"
+                        "The Chainsmokers",
+                        "Coldplay"
                     ],
-                    duration: "02:29",
-                    uri: "/assets/song/ctbmn5/song1.mp3",
+                    duration: "04:08",
+                    uri: "/assets/song/ctbmn5/song7.mp3",
                 },
                 {
                     id: "/playlistpage/ctbmn5_song8",
-                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/e/7/b/5/e7b5b51e9ce0d4327ffd811c9815770c.jpg" },
-                    name: "True Love",
+                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/4/d/7/f/4d7f34a9f96160d0d57faa3cc7c3f680.jpg" },
+                    name: "Kind of Blue",
                     artists: [
-                        "Kanye West",
-                        "Xxxtentacion"
+                        "Hellberg",
                     ],
-                    duration: "02:29",
-                    uri: "/assets/song/ctbmn5/song1.mp3",
+                    duration: "02:46",
+                    uri: "/assets/song/ctbmn5/song8.mp3",
                 },
             ]
         },
@@ -360,63 +361,44 @@ export const initalState = {
                 },
                 {
                     id: "/playlistpage/ctbmn6_song2",
-                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/b/6/4/b/b64b9bc077f35f2ed79c6e5b019e81ea.jpg" },
-                    name: "AS IF IT'S YOUR LAST",
+                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/b/1/4/4/b144497aff69a4b8d16687c2bc30b224.jpg" },
+                    name: "Gone",
                     artists: [
-                        "BLACKPINK"
+                        "ROSÉ"
                     ],
-                    duration: "03:33",
-                    uri: "/assets/song/ctbmn6/song1.mp3",
+                    duration: "03:27",
+                    uri: "/assets/song/ctbmn6/song2.mp3",
                 },
                 {
                     id: "/playlistpage/ctbmn6_song3",
-                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/b/6/4/b/b64b9bc077f35f2ed79c6e5b019e81ea.jpg" },
-                    name: "AS IF IT'S YOUR LAST",
+                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/b/1/4/4/b144497aff69a4b8d16687c2bc30b224.jpg" },
+                    name: "On The Ground",
                     artists: [
-                        "BLACKPINK"
+                        "ROSÉ"
                     ],
-                    duration: "03:33",
-                    uri: "/assets/song/ctbmn6/song1.mp3",
+                    duration: "02:48",
+                    uri: "/assets/song/ctbmn6/song3.mp3",
                 },
                 {
                     id: "/playlistpage/ctbmn6_song4",
-                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/b/6/4/b/b64b9bc077f35f2ed79c6e5b019e81ea.jpg" },
-                    name: "AS IF IT'S YOUR LAST",
+                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/7/b/5/8/7b58ee1b1edbf002d4a38dd708695b42.jpg" },
+                    name: "Summer or Summer",
                     artists: [
-                        "BLACKPINK"
+                        "Hyolyn",
+                        "DASOM"
                     ],
-                    duration: "03:33",
-                    uri: "/assets/song/ctbmn6/song1.mp3",
+                    duration: "03:19",
+                    uri: "/assets/song/ctbmn6/song4.mp3",
                 },
                 {
                     id: "/playlistpage/ctbmn6_song5",
-                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/b/6/4/b/b64b9bc077f35f2ed79c6e5b019e81ea.jpg" },
-                    name: "AS IF IT'S YOUR LAST",
+                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_png/cover/f/3/0/4/f304885bb4dd363ca18bd1ca088770f6.png" },
+                    name: "Queendom",
                     artists: [
-                        "BLACKPINK"
+                        "Red Velvet"
                     ],
-                    duration: "03:33",
-                    uri: "/assets/song/ctbmn6/song1.mp3",
-                },
-                {
-                    id: "/playlistpage/ctbmn6_song6",
-                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/b/6/4/b/b64b9bc077f35f2ed79c6e5b019e81ea.jpg" },
-                    name: "AS IF IT'S YOUR LAST",
-                    artists: [
-                        "BLACKPINK"
-                    ],
-                    duration: "03:33",
-                    uri: "/assets/song/ctbmn6/song1.mp3",
-                },
-                {
-                    id: "/playlistpage/ctbmn6_song7",
-                    image: { url: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/b/6/4/b/b64b9bc077f35f2ed79c6e5b019e81ea.jpg" },
-                    name: "AS IF IT'S YOUR LAST",
-                    artists: [
-                        "BLACKPINK"
-                    ],
-                    duration: "03:33",
-                    uri: "/assets/song/ctbmn6/song1.mp3",
+                    duration: "03:02",
+                    uri: "/assets/song/ctbmn6/song5.mp3",
                 },
 
             ]
