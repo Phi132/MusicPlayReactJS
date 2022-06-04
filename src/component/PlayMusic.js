@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 
 import StartMusic from './MusicControl/StartMusic';
 import {
-    BrowserRouter as Router,
+
     NavLink,
 
 } from "react-router-dom";
@@ -11,7 +11,7 @@ import PrevSong from './MusicControl/PrevSong';
 import NextSong from './MusicControl/NextSong';
 import RanDomSong from './MusicControl/RanDomSong';
 import LoopSong from './MusicControl/LoopSong';
-import axios from 'axios';
+
 import { useProviderContext } from '../utils/StateProvider';
 import { reducerCases } from '../utils/Constains';
 import noImgPlaylist from '../img/no_playList.PNG';
@@ -21,20 +21,16 @@ import noImgPlaylist from '../img/no_playList.PNG';
 const PlayMusic = (props) => {
     //const audioRef = useRef(null);
 
-    const [{ URL_WEBSITE,
-        // accessTokenProvider,
-        currentPlaying,
-        URL_SERVER, myplaylist,
+    const [{ 
         playWhenChangePlaylist,
         currentPlaylistNoapi, IndexSong }, dispatch] = useProviderContext();
 
-    const [audioRef, setAudioRef] = useState(useRef(new Audio()));
+    const [audioRef] = useState(useRef(new Audio()));
     const [timeSong, setTimeSong] = useState();
     const [timeDuration, setTimeDuration] = useState();
     const [isPlayingSong, setIsPlayingSong] = useState();
     const [pathCurrentSongPlaying, setPathCurrentSongPlaying] = useState("/");
 
-    var songs = props.songs;
     var currentIndex = props.currentIndex;
     var setCurrentIndex = props.setCurrentIndex;
 
@@ -284,7 +280,7 @@ const PlayMusic = (props) => {
 
         }
         else {
-            if (IndexSong < JSON.parse(localStorage.getItem('PlaylistSong')).length) {
+            if (IndexSong < 0) {
                 setCurrentIndex(JSON.parse(localStorage.getItem('PlaylistSong')).length - 1);
                 dispatch({ dataIndexSong: JSON.parse(localStorage.getItem('PlaylistSong')).length - 1, type: reducerCases.SET_INDEX_SONG });
 

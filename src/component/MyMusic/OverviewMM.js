@@ -1,14 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useProviderContext } from '../../utils/StateProvider';
 import noImgPlaylist from '../../img/no_playList.PNG';
 import { reducerCases } from '../../utils/Constains';
 
+
+// const ScrollToRef = (ref) => {
+//     ref.current.scrollIntoViewOptions = ({
+//         behavior: "smooth",
+//         block: "end", inline: "nearest"
+//     });
+// }
+
 const OverviewMM = (props) => {
 
-    const [{ myplaylist, currentPlaylistNoapi, IndexSong }, dispatch] = useProviderContext();
+    const [{  currentPlaylistNoapi }, dispatch] = useProviderContext();
 
-    const songs = props.songs
-    var CurrentIndex = props.CurrentIndex;
     const onClickSong = (index) => {
         props.setCurrentIndex(index);
 
@@ -23,6 +29,16 @@ const OverviewMM = (props) => {
 
     }
 
+    // const scrollIntoViewRef = useRef();
+
+    // useEffect(() => {
+    //     if (scrollIntoViewRef && scrollIntoViewRef.current) {
+    //         scrollIntoViewRef.current.scrollIntoView({
+    //             behavior: "smooth",
+    //         });
+    //     }
+    // }, [JSON.parse(localStorage.getItem('IndexSongPlaying'))])
+
     const [motionImgFirst, setMotionImgFirst] = useState(1);
     // hoạt ảnh của các hình trong my music
     // hình 1
@@ -36,7 +52,7 @@ const OverviewMM = (props) => {
             setMotionImgFirst(motionIndexFirst + 1);
         }, 2000);
         return () => clearInterval(index);
-    }, [motionImgFirst])
+    }, [motionImgFirst, motionIndexFirst])
     const motionImg1 = () => {
         if (motionImgFirst === 1) {
             return "song-img-item first"
@@ -172,7 +188,7 @@ const OverviewMM = (props) => {
                                                     data-index={index}
                                                     key={index}
                                                     onClick={() => onClickSong(index)}
-                                                //ref={scrollIntoViewRef}
+                                                    // ref={scrollIntoViewRef}
 
                                                 >
                                                     <div className="thumb" style={{

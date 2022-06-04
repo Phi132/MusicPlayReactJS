@@ -6,58 +6,64 @@ import { reducerCases } from '../../utils/Constains';
 function Authenticantion(code) {
   const [accessToken, setAccessToken] = useState();
   const [refreshToken, setRefreshToken] = useState(sessionStorage.getItem('refreshToken') || '');
-  const [ setExpiresIn] = useState(sessionStorage.getItem('expiresIn') || '');
+  const [setExpiresIn] = useState(sessionStorage.getItem('expiresIn') || '');
 
-  const [{  URL_SERVER }, dispatch] = useProviderContext();
+  const [{ URL_SERVER }, dispatch] = useProviderContext();
 
-  useEffect(async () => {
-    await axios.post(URL_SERVER + '/login', {
-      code,
-    })
-      .then(res => {
-        setAccessToken(res.data.accessToken);
-        sessionStorage.setItem('accessToken', (res.data.accessToken));
-
-        setRefreshToken(res.data.refreshToken);
-        sessionStorage.setItem('refreshToken', (res.data.refreshToken));
-
-        setExpiresIn(res.data.expiresIn);
-        sessionStorage.setItem('expiresIn', (res.data.expiresIn));
-        window.history.pushState({}, null, "/");
-
-        console.log("login");
+  useEffect(() => {
+    async function Login() {
+      let res = await axios.post(URL_SERVER + '/login', {
+        code,
       })
-      .catch((err) => {
-        console.log(err);
-        // window.location = "/";
-      })
+        .then(res => {
+          setAccessToken(res.data.accessToken);
+          sessionStorage.setItem('accessToken', (res.data.accessToken));
+
+          setRefreshToken(res.data.refreshToken);
+          sessionStorage.setItem('refreshToken', (res.data.refreshToken));
+
+          setExpiresIn(res.data.expiresIn);
+          sessionStorage.setItem('expiresIn', (res.data.expiresIn));
+          window.history.pushState({}, null, "/");
+
+          console.log("login");
+        })
+        .catch((err) => {
+          console.log(err);
+          // window.location = "/";
+        })
+    }
+    Login();
 
   }, [code]);
 
-  useEffect(async () => {
+  useEffect(() => {
     // if (!refreshToken || !expiresIn) return
     // const interval = setInterval(() => {
-    await axios.post(URL_SERVER + '/refresh', {
-      refreshToken,
-    })
-      .then(res => {
-        setAccessToken(res.data.accessToken);
-        setExpiresIn(res.data.expiresIn);
-        console.log("refresh ", res.data.accessToken);
-        dispatch({
-          accessTokenProvider: res.data.accessToken,
-          type: reducerCases.SET_TOKEN,
-        });
-        
+    async function hrefresh() {
+      let res = await axios.post(URL_SERVER + '/refresh', {
+        refreshToken,
       })
-      .catch((err) => {
-        console.log(err);
-        // window.location = "/";
+        .then(res => {
+          setAccessToken(res.data.accessToken);
+          setExpiresIn(res.data.expiresIn);
+          console.log("refresh ", res.data.accessToken);
+          dispatch({
+            accessTokenProvider: res.data.accessToken,
+            type: reducerCases.SET_TOKEN,
+          });
 
-      })
-    // }, (expiresIn - 60) * 1000);
+        })
+        .catch((err) => {
+          console.log(err);
+          // window.location = "/";
 
-    // return () => clearInterval(interval);
+        })
+      // }, (expiresIn - 60) * 1000);
+
+      // return () => clearInterval(interval);
+    }
+    hrefresh();
 
   }, [sessionStorage.getItem('expiresIn'), sessionStorage.getItem('refreshToken')]);
 

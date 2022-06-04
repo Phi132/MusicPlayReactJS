@@ -11,101 +11,30 @@ import {
 } from "react-router-dom";
 import Home from './Home';
 import MyMusic from './MyMusic/MyMusic';
-import Libary from './MyMusic/Libary';
 import PlayMusic from './PlayMusic';
 import VolumeSong from './VolumeSong';
 import Chart from './ChartPage/Chart';
 import { Auth } from './context/Auth';
 import Maintance from './Maintance/Maintance';
-import Authenticantion from './Login/Authenticantion';
-import SpotifyWebApi from 'spotify-web-api-node';
-import { reducerCases } from '../utils/Constains';
-import { useProviderContext } from '../utils/StateProvider';
-import { initalState } from '../utils/reducer';
-import axios from 'axios';
-import { ResponsiveEmbed } from 'react-bootstrap';
+// import SpotifyWebApi from 'spotify-web-api-node';
 import PlaylistPage from './Playlist/PlaylistPage';
 
 
 
-const spotifyApi = new SpotifyWebApi({
-    clientId: 'c358a6d11119494fb227b7e5aba6be5f',
-});
+// const spotifyApi = new SpotifyWebApi({
+//     clientId: 'c358a6d11119494fb227b7e5aba6be5f',
+// });
 
 const Navigation = (props, exact) => {
     // const accessToken = Authenticantion(props.code);
-    const [search, setSearch] = useState();
-    const [searchResult, setSearchResult] = useState();
+    const [ setSearch] = useState();
+    const [searchResult] = useState();
     const [searchActive, setSearchActive] = useState(false);
 
-    const [chooseTrack, setChooseTrack] = useState();
+    const [ setChooseTrack] = useState();
 
 
-    const [songs] = useState([
-        {
-            name: "Sóng",
-            singer: "Dzàng Hoàng x Thúy Anh x Bảo Nguyên",
-            path: "/assets/song/song1.mp3",
-            image: "/assets/img/song1_img.jpg",
-            timeSong: "05:05"
-        },
-        {
-            name: "Đã Từng",
-            singer: "Bùi Anh Tuấn x Dương Hoàng Yến",
-            path: "/assets/song/song2.mp3",
-            image:
-                "/assets/img/song2_img.jpg",
-            timeSong: "04:56"
-        },
-        {
-            name: "Suýt Nữa Thì",
-            singer: "Andiez",
-            path:
-                "/assets/song/song3.mp3",
-            image: "/assets/img/song3_img.jpg",
-            timeSong: "04:43"
-        },
-        {
-            name: "Ngày Mai Em Đi (Touliver Mix)",
-            singer: "Touliver,Lê Hiếu,SooBin",
-            path:
-                "/assets/song/song4.mp3",
-            image: "/assets/img/song4_img.jpg",
-            timeSong: "03:38"
-        },
-        {
-            name: "Giả Vờ Nhưng Em Yêu Anh",
-            singer: "Miu Lê",
-            path:
-                "/assets/song/song5.mp3",
-            image: "/assets/img/song5_img.jpg",
-            timeSong: "03:54"
-        },
-        {
-            name: "Muộn Rồi Mà Sao Còn",
-            singer: "Sơn Tùng M-TP",
-            path:
-                "/assets/song/song6.mp3",
-            image: "/assets/img/song6_img.jpg",
-            timeSong: "04:35"
-        },
-        {
-            name: "STAY",
-            singer: "Justin Bieber",
-            path:
-                "/assets/song/song7.mp3",
-            image: "/assets/img/song7_img.jpg",
-            timeSong: "02:21"
-        },
-        {
-            name: "Heartbreak Anniversary",
-            singer: "Giveon",
-            path:
-                "/assets/song/song8.mp3",
-            image: "/assets/img/song8_img.jpg",
-            timeSong: "03:16"
-        },
-    ]);
+
 
     const [currentIndex, setCurrentIndex] = useState(Number(localStorage.getItem('currentIndex')) || 0);
     const [isPlaying, setisPlaying] = useState(false);
@@ -257,9 +186,9 @@ const Navigation = (props, exact) => {
         }
 
     }
-    const LeaveSearch = () => {
-        setSearchActive(false);
-    }
+    // const LeaveSearch = () => {
+    //     setSearchActive(false);
+    // }
     const clickSearch = () => {
         setSearchActive(true);
     }
@@ -303,7 +232,7 @@ const Navigation = (props, exact) => {
         setChooseTrack(trackUri)
     }
     // lấy context
-    const { isAuthenticated } = useContext(Auth)
+    // const { isAuthenticated } = useContext(Auth)
 
     return (
         <>
@@ -468,9 +397,9 @@ const Navigation = (props, exact) => {
                                 <input className="input1" type="file" name="upload-btn" id="upload-btn" />
                                 <label htmlFor="upload-btn">
                                     <div className="upload">
-                                        <a className="btn-theme-link" tabIndex="0">
+                                        <span className="btn-theme-link" tabIndex="0">
                                             <i className="fas fa-cloud-upload-alt"></i>
-                                        </a>
+                                        </span>
                                     </div>
                                 </label>
 
@@ -631,29 +560,29 @@ const Navigation = (props, exact) => {
                                         <div className="describe-vip">
                                             Nghe nhạc không quảng cáo cùng kho nhạc VIP
                                         </div>
-                                        <a className="buy-vip">
+                                        <span className="buy-vip">
                                             mua vip
-                                        </a>
+                                        </span>
                                     </div>
                                     <div className="sidebar-libary">
                                         <div className="sidebar-libary-title">
                                             thư viện
                                         </div>
                                         <div className="icon-labary">
-                                            <a className="link-libary">
+                                            <span className="link-libary">
                                                 <i className="fas fa-pencil-alt"></i>
-                                            </a>
+                                            </span>
                                         </div>
                                     </div>
                                     <ul className="sidebar-libary-personal">
                                         <li className="libary-personal-item">
-                                            <a className="link-libary-item">
+                                            <span className="link-libary-item">
                                                 <i className="icon-p-item">
                                                     <img src="https://zjs.zadn.vn/zmp3-desktop/releases/v1.0.13/static/media/my-song.cf0cb0b4.svg"
                                                         alt="icon" />
                                                 </i>
                                                 <span>Bài Hát</span>
-                                            </a>
+                                            </span>
                                         </li>
 
                                         <li className="libary-personal-item">
@@ -723,7 +652,7 @@ const Navigation = (props, exact) => {
 
                                 //track uri
                                 // accessToken={sessionStorage.getItem('accessToken')}
-                                trackUri={chooseTrack}
+                               
 
                             />
 

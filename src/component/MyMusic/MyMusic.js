@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {
-    BrowserRouter as Router,
     Switch,
     Route,
     // Link,
@@ -55,7 +54,7 @@ const MyMusic = (props) => {
         }
     ]);
 
-    const [{ owner, myplaylist, IndexSong, currentPlaylistNoapi }, dispatch] = useProviderContext();
+    const [{ myplaylist }, dispatch] = useProviderContext();
 
     useEffect(() => {
         dispatch({
@@ -63,9 +62,8 @@ const MyMusic = (props) => {
             type: reducerCases.SET_CURRENT_PLAYING_NO_API
         });
 
-    }, []);
+    }, [myplaylist, dispatch]);
 
-    const songs = props.songs
     var CurrentIndex = props.currentIndex;
 
     // phát tất cả
@@ -80,7 +78,7 @@ const MyMusic = (props) => {
         window.location.reload();
     }
     //load Auth Context
-    const { isAuthenticated, toggleAuth } = useContext(Auth)
+    const { isAuthenticated } = useContext(Auth)
     return (
         <>
             <Helmet>
@@ -154,9 +152,9 @@ const MyMusic = (props) => {
                                     <input type="file" name="option-upload" id="option-upload" style={{ display: "none" }} />
                                     <label htmlFor="option-upload">
                                         <div className="option-upload">
-                                            <a className="btn-option-link" tabIndex="0">
+                                            <span className="btn-option-link" tabIndex="0">
                                                 <i className="fas fa-cloud-upload-alt"></i>
-                                            </a>
+                                            </span>
                                         </div>
                                     </label>
                                 </div>

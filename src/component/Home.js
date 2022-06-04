@@ -5,7 +5,6 @@ import "slick-carousel/slick/slick-theme.css";
 import { useProviderContext } from '../utils/StateProvider';
 import noImgPlaylist from '../img/no_playList.PNG';
 import { NavLink } from 'react-router-dom';
-import { reducerCases } from '../utils/Constains';
 
 const Home = () => {
     const [motionGalleryIndex, setMotionGalleryIndex] = useState(1);
@@ -23,7 +22,7 @@ const Home = () => {
         //console.log(motionGalleryIndex)
         return () => clearInterval(increaseIndex)
 
-    }, [motionGalleryIndex]);
+    }, [motionGalleryIndex, index]);
     // hình 1 
     const motion1 = () => {
         if (motionGalleryIndex === 1) {

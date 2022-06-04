@@ -5,7 +5,6 @@ import { ThemeProvider } from 'styled-components';
 import { blackTheme, RoseTheme, IUxTheme, redTheme, GlobalStyles } from "./component/controlTheme/Theme";
 
 import AuthProvider from "./component/context/Auth";
-import Login from "./component/Login/Login";
 import { useProviderContext } from "./utils/StateProvider";
 
 
