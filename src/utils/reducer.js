@@ -3,6 +3,7 @@ import { reducerCases } from './Constains';
 
 export const initalState = {
     URL_SERVER: "https://musicplayerbe1.herokuapp.com",
+    URL_SERVER_JAVA: "https://sound-site-be.herokuapp.com",
     URL_WEBSITE: "http://localhost:3000/",
     accessTokenProvider: null,
     playLists: [],

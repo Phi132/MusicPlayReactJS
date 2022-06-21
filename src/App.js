@@ -6,6 +6,7 @@ import { blackTheme, RoseTheme, IUxTheme, redTheme, GlobalStyles } from "./compo
 
 import AuthProvider from "./component/context/Auth";
 import { useProviderContext } from "./utils/StateProvider";
+import Login from "./component/Login/Login";
 
 
 
@@ -67,16 +68,16 @@ const App = () => {
                 <GlobalStyles />
                 <AuthProvider>
                     {
-                        // sessionStorage.getItem('code', (code)) ?
-                        // code ?
-                        (
-                            <Navigation
-                                // code={sessionStorage.getItem('code', (code))}
-                                theme={theme}
-                                setTheme={setTheme}
-                            />
-                        )
-                        // : <Login />
+                        localStorage.getItem('userName') ?
+
+                            (
+                                <Navigation
+                                    // code={sessionStorage.getItem('code', (code))}
+                                    theme={theme}
+                                    setTheme={setTheme}
+                                />
+                            )
+                            : <Login />
                     }
 
                 </AuthProvider>

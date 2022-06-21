@@ -22,6 +22,10 @@ import { Auth } from '../context/Auth'
 import FormLogin from '../formLogin/FormLogin';
 import { useProviderContext } from '../../utils/StateProvider';
 import { reducerCases } from '../../utils/Constains';
+import { useHistory } from "react-router-dom";
+
+
+
 const MyMusic = (props) => {
     const [mymusics] = useState([
         {
@@ -71,10 +75,12 @@ const MyMusic = (props) => {
         props.setisPlaying(true)
     }
     // click btn log out
+    let history = useHistory();
     const logOutToggle = () => {
         // toggleAuth();
-        sessionStorage.removeItem('code');
-
+        // sessionStorage.removeItem('code');
+        localStorage.removeItem('userName');
+        history.push("/login");
         window.location.reload();
     }
     //load Auth Context
@@ -97,7 +103,9 @@ const MyMusic = (props) => {
                                     className="avt_profile" alt="avt Profile" />
                             </div>
                             <div className="profile_cnt_name">
-                                <span>Thành Phi</span>
+                                <span>{
+                                    localStorage.getItem('userName') ? JSON.parse(localStorage.getItem('userName')) : 'Đang Tải'
+                                }</span>
                             </div>
                             <div className="profile_cnt_actions">
                                 <div className="buy-vip-action">
