@@ -103,9 +103,9 @@ const MyMusic = (props) => {
                                     className="avt_profile" alt="avt Profile" />
                             </div>
                             <div className="profile_cnt_name">
-                                <span>{
-                                    localStorage.getItem('userName') ? JSON.parse(localStorage.getItem('userName')) : 'Đang Tải'
-                                }</span>
+                                <span>
+                                    Thành Phi
+                                </span>
                             </div>
                             <div className="profile_cnt_actions">
                                 <div className="buy-vip-action">
@@ -119,7 +119,7 @@ const MyMusic = (props) => {
                                     data-effect="solid"
                                     data-background-color="#4e4e4e"
                                     data-offset="{'top' : 10}"
-                                    onClick={logOutToggle}
+                                    // onClick={logOutToggle}
                                 >
                                     <ReactTooltip />
                                     <i className="fas fa-sign-out-alt"></i>

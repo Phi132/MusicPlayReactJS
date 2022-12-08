@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.27.2",
     "bootstrap": "^5.1.1",
+    "caniuse-lite": "^1.0.30001436",
     "chart.js": "^3.5.1",
     "deepmerge-ts": "^4.0.3",
     "jquery": "^3.6.0",
@@ -29,7 +30,6 @@
     "react-slick": "^0.28.1",
     "react-spotify-web-playback": "^0.8.1",
     "react-tooltip": "^4.2.21",
-    "serve": "^13.0.2",
     "slick-carousel": "^1.8.1",
     "spotify-web-api-node": "^5.0.2",
     "styled-components": "^5.3.1",
@@ -37,12 +37,10 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "dev": "react-scripts start",
-    "start": "serve -s build",
+    "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build"
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

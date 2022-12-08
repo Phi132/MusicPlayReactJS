@@ -68,16 +68,16 @@ const App = () => {
                 <GlobalStyles />
                 <AuthProvider>
                     {
-                        localStorage.getItem('userName') ?
+                        // localStorage.getItem('userName') ?
 
-                            (
-                                <Navigation
-                                    // code={sessionStorage.getItem('code', (code))}
-                                    theme={theme}
-                                    setTheme={setTheme}
-                                />
-                            )
-                            : <Login />
+                        (
+                            <Navigation
+                                // code={sessionStorage.getItem('code', (code))}
+                                theme={theme}
+                                setTheme={setTheme}
+                            />
+                        )
+                        // : <Login />
                     }
 
                 </AuthProvider>
